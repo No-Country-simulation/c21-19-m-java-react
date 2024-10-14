@@ -1,7 +1,10 @@
+import React from "react";
+import Home from "./components/Home.jsx";
+
 function App() {
   return (
     <>
-      <h1>Colitas Felices</h1>
+      <Home />
     </>
   );
 }

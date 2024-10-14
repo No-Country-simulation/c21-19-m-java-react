@@ -1,0 +1,32 @@
+/* ***************Custom Properties*********************** */
+:root {
+  --first-color: #FCA22F;
+  --first-alpha-color: #FCA22F75;
+  --second-color: #F9F2D9;
+  --second-alpha-color: #F9F2D9;
+  --third-color: #46958B;
+  --third-alpha-color: #46958B;
+
+  --link-color: #174C5F;
+  --link-alpha-color: #174C5F;
+
+  --blue-color: #A2E1ED
+ --blue-alpha-color: #A2E1ED
+}
+/* ***************Reset Styles*********************** */
+body {
+  /* En bootstrap el font family se agrega en el body */
+  font-family: "raleway", sans-serif;
+}
+
+a {
+  color: var(--link-color);
+  transition: all 0.3s ease-out;
+}
+
+a:hover {
+  color: var(--first-color);
+}
+/* ***************Bootstrap Styles*********************** */
+
+/* ***************My Styles*********************** */
