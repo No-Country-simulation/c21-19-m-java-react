@@ -1,17 +1,17 @@
 /* ***************Custom Properties*********************** */
 :root {
-  --first-color: #FCA22F;
-  --first-alpha-color: #FCA22F75;
-  --second-color: #F9F2D9;
-  --second-alpha-color: #F9F2D9;
-  --third-color: #46958B;
-  --third-alpha-color: #46958B;
+  --first-color: #fca22f;
+  --first-alpha-color: #fca22f75;
+  --second-color: #f9f2d9;
+  --second-alpha-color: #f9f2d9;
+  --third-color: #46958b;
+  --third-alpha-color: #46958b;
 
-  --link-color: #174C5F;
-  --link-alpha-color: #174C5F;
+  --link-color: #174c5f;
+  --link-alpha-color: #174c5f;
 
-  --blue-color: #A2E1ED
- --blue-alpha-color: #A2E1ED
+  --blue-color: #a2e1ed;
+  --blue-alpha-color: #a2e1ed;
 }
 /* ***************Reset Styles*********************** */
 body {
@@ -27,6 +27,20 @@ a {
 a:hover {
   color: var(--first-color);
 }
+
 /* ***************Bootstrap Styles*********************** */
 
 /* ***************My Styles*********************** */
+
+.menu {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.active-link {
+  font-weight: bold;
+}
+
+.active-link a:hover {
+  color: var(--first-color);
+}
