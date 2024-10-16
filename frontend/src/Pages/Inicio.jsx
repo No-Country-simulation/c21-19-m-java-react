@@ -1,6 +1,6 @@
 import React from "react";
 
-const Home = () => {
+const Inicio = () => {
   return (
     <div>
       <h2>Pagina de Inicio</h2>
@@ -22,11 +22,8 @@ const Home = () => {
         <h2>Historias de Adopción</h2>
         <article>Carrusel Historias de Adopción</article>
       </section>
-      <footer>
-        <small>Copyright Colitas Felices 2024</small>
-      </footer>
     </div>
   );
 };
 
-export default Home;
+export default Inicio;
