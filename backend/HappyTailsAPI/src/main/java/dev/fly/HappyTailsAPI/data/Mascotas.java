@@ -5,6 +5,7 @@ import java.util.Set;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import org.hibernate.type.TrueFalseConverter;
 
 @Entity
 @Data
@@ -22,20 +23,24 @@ public class Mascotas {
     @Column(length = 20, nullable = false)
     private String color;
     @Column(length = 5, nullable = false)
-    private float tamanio;
+    private float medida;
     @Column(length = 20, nullable = false)
     private String raza;
     @Column(length = 20, nullable = false)
-    private String tipo;
+    private String especie;
+
     @Column(nullable = false)
-    private boolean estado;
+    @Convert(converter = TrueFalseConverter.class)
+    private Boolean estado;
 
     @OneToMany(mappedBy = "mascotas", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private Set<Adopcion> adopciones;
-    
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_registro", nullable = true)
-    private Administrador administrador;
+
+
+    @OneToMany(mappedBy = "mascotas", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private Set<Registro> registros;
 }

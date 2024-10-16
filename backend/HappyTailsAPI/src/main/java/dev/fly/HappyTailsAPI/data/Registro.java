@@ -1,33 +1,29 @@
 package dev.fly.HappyTailsAPI.data;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.type.TrueFalseConverter;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "adopcion")
+@Table(name = "registro")
 
-public class Adopcion {
+public class Registro {
 
     @EmbeddedId
-    private MascotasLlaveCompuesta id;
+    private RegistroLlaveCompuesta id;
 
     @Column(nullable = false)
-    private String fechaAdopcion;
-    
+    private String fechaRegistro;
+
     @ManyToOne
-    @MapsId("dniUsuario")
-    @JoinColumn(name = "dni_usuario", nullable = true)
+    @MapsId("adminsitradorAlias")
+    @JoinColumn(name = "adminsitrador", nullable = true)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    private Usuario usuario;
+    private Administrador alias;
     
     @ManyToOne
     @MapsId("mascotasId")
