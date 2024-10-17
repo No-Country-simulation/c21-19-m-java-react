@@ -19,15 +19,15 @@ public class Mascotas {
     @Column(length = 25, nullable = false)
     private String nombre;
     @Column(length = 25, nullable = false)
-    private String ubicacion;
-    @Column(length = 20, nullable = false)
-    private String color;
-    @Column(length = 5, nullable = false)
-    private float medida;
+    private String medida;
     @Column(length = 20, nullable = false)
     private String raza;
     @Column(length = 20, nullable = false)
     private String especie;
+    @Column(length = 255, nullable = false)
+    private String descripcion;
+    @Column(length = 20, nullable = false)
+    private String edad;
 
     @Column(nullable = false)
     @Convert(converter = TrueFalseConverter.class)

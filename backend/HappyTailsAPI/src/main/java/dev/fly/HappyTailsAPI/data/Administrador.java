@@ -1,7 +1,6 @@
 package dev.fly.HappyTailsAPI.data;
 
 import jakarta.persistence.*;
-import java.util.List;
 import lombok.Data;
 import org.hibernate.type.TrueFalseConverter;
 
