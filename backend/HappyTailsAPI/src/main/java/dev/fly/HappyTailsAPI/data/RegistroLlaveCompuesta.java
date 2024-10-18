@@ -13,6 +13,6 @@ import java.io.Serializable;
 @AllArgsConstructor
 
 public class RegistroLlaveCompuesta implements Serializable{
-    private String adminsitradorAlias;
+    private String administradorAlias;
     private int mascotasId;
 }

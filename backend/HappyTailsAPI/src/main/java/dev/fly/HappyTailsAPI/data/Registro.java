@@ -18,8 +18,8 @@ public class Registro {
     private String fechaRegistro;
 
     @ManyToOne
-    @MapsId("adminsitradorAlias")
-    @JoinColumn(name = "adminsitrador", nullable = true)
+    @MapsId("administradorAlias")
+    @JoinColumn(name = "administrador", nullable = true)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private Administrador alias;

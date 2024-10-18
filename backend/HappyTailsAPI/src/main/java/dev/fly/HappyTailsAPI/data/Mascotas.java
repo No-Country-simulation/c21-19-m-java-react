@@ -14,6 +14,7 @@ import org.hibernate.type.TrueFalseConverter;
 public class Mascotas {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_mascotas", nullable = false)
     private int IdMascotas;
     @Column(length = 25, nullable = false)
