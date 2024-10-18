@@ -1,46 +1,78 @@
 /* ***************Custom Properties*********************** */
 :root {
-  --first-color: #fca22f;
-  --first-alpha-color: #fca22f75;
-  --second-color: #f9f2d9;
-  --second-alpha-color: #f9f2d9;
-  --third-color: #46958b;
-  --third-alpha-color: #46958b;
+  --first-color: rgb(252, 162, 47);
+  --first-alpha-color: rgba(252, 162, 47, 0.75);
+  --second-color: rgb(249, 242, 217) #;
+  --second-alpha-color: rgba(249, 242, 217, 0.75);
+  --third-color: rgb(70, 149, 139);
+  --third-alpha-color: rgba(70, 149, 139, 0.75);
 
-  --link-color: #174c5f;
-  --link-alpha-color: #174c5f;
+  --link-color: rgb(23, 76, 95);
+  --link-alpha-color: rgba(23, 76, 95, 0.75);
 
-  --blue-color: #a2e1ed;
-  --blue-alpha-color: #a2e1ed;
+  --bg-color: rgb(162, 225, 237) #;
+  --bg-alpha-color: rgba(162, 225, 237, 0.75);
+
+  --bg-img-color: rgba(20, 25, 45, 0.75);
 }
 /* ***************Reset Styles*********************** */
 body {
   /* En bootstrap el font family se agrega en el body */
   font-family: "raleway", sans-serif;
-}
 
-a {
-  color: var(--link-color);
-  transition: all 0.3s ease-out;
-}
+  a {
+    color: var(--link-color);
+    transition: all 0.3s ease-out;
+  }
 
-a:hover {
-  color: var(--first-color);
+  a:hover {
+    color: var(--first-color);
+  }
 }
 
 /* ***************Bootstrap Styles*********************** */
 
+.nav-link {
+  margin-left: 0.5rem;
+  font-size: 1.15rem;
+  font-weight: bold;
+  transition: all 0.3s ease-out;
+}
+
+.nav-link:hover {
+  color: var(--first-color);
+}
 /* ***************My Styles*********************** */
 
-.menu {
-  display: flex;
-  justify-content: space-evenly;
+.bg-hero-image {
+  background-image: var(--bg-image);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
-.active-link {
-  font-weight: bold;
+.img-brand img {
+  width: auto;
+  height: 3rem;
 }
 
-.active-link a:hover {
-  color: var(--first-color);
+.footer-img {
+  width: auto;
+  height: 7rem;
+}
+
+.bg-second-alpha-color {
+  background-color: var(--second-alpha-color);
+}
+
+.bg-img-color {
+  background-color: var(--bg-img-color);
+}
+
+.bg-first-color {
+  background-color: var(--first-color);
+}
+
+.bg-third-color {
+  background-color: var(--third-color);
 }
