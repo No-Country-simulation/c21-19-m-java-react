@@ -6,15 +6,15 @@ const Inicio = () => {
   return (
     <div className="container">
       <Header />
-      <section className="row align-items-lg-center min-vh-100 mt-5">
+      <section className="row align-items-lg-center mt-5">
         <h2 className="fw-bold text-center">Pasos para adoptar</h2>
-        <article className="col-12 col-md-6 col-lg-4 d-flex">
+        <article className="col-12 col-md-6 col-lg-3 d-flex">
           <Card
-            className="mx-auto mb-3 d-flex flex-column"
+            className=" mx-auto  mb-3 d-flex flex-column"
             style={{ width: "15rem" }}
           >
             <Card.Img
-              className="bg-third-color"
+              className="bg-third-color "
               variant="top"
               src="paso-1.png"
             />
@@ -27,7 +27,7 @@ const Inicio = () => {
             </Card.Body>
           </Card>
         </article>
-        <article className="col-12 col-md-6 col-lg-4 d-flex">
+        <article className="col-12 col-md-6 col-lg-3 d-flex">
           <Card
             className="mx-auto mb-3 d-flex flex-column"
             style={{ width: "15rem" }}
@@ -46,7 +46,7 @@ const Inicio = () => {
             </Card.Body>
           </Card>
         </article>
-        <article className="col-12 col-md-6 col-lg-4 d-flex">
+        <article className="col-12 col-md-6 col-lg-3 d-flex">
           <Card
             className="mx-auto mb-3 d-flex flex-column"
             style={{ width: "15rem" }}
@@ -59,13 +59,12 @@ const Inicio = () => {
             <Card.Body>
               <Card.Title>Paso 3</Card.Title>
               <Card.Text>
-                Nos pondremos en contacto contigo, evaluaremos tu solicitud y si
-                haces match con tu mascota continuarás el proceso.
+                Evaluaremos tu solicitud y nos pondremos en contacto contigo.
               </Card.Text>
             </Card.Body>
           </Card>
         </article>
-        <article className="col-12 col-md-6 col-lg-4 d-flex">
+        <article className="col-12 col-md-6 col-lg-3 d-flex">
           <Card
             className="mx-auto mb-3 d-flex flex-column"
             style={{ width: "15rem" }}
@@ -78,40 +77,22 @@ const Inicio = () => {
             <Card.Body>
               <Card.Title>Paso 4</Card.Title>
               <Card.Text>
-                Una vez aprobada la adopción, recibirás asesoramiento para tu
-                mascota en particular.
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </article>
-        <article className="col-12 col-md-6 col-lg-4">
-          <Card
-            className="mx-auto mb-3 d-flex flex-column"
-            style={{ width: "15rem" }}
-          >
-            <Card.Img
-              className="bg-third-color"
-              variant="top"
-              src="paso-5.png"
-            />
-            <Card.Body>
-              <Card.Title>Paso 5</Card.Title>
-              <Card.Text>
-                ¡Finalmente, podrás recoger a tu nuevo mejor amigo!.
+                Si se aprueba la adopción, podrás venir por tu próximo mejor
+                amigo!.
               </Card.Text>
             </Card.Body>
           </Card>
         </article>
       </section>
-      <section className="row align-items-lg-center min-vh-100 mt-5">
+      <section className="row align-items-lg-center mt-5">
         <h2 className="fw-bold text-center">Historias de adopción</h2>
         <article className="col-12 col-md-6 col-lg-4 d-flex">
           <Card
-            className="mx-auto mb-3 d-flex flex-column"
+            className=" mx-auto mb-3 d-flex flex-column"
             style={{ width: "15rem" }}
           >
             <Card.Img
-              className="bg-third-color"
+              className="bg-third-color "
               variant="top"
               src="user-1.jpg"
             />
@@ -137,8 +118,8 @@ const Inicio = () => {
             <Card.Body>
               <Card.Title>Daniel</Card.Title>
               <Card.Text>
-                Cuando traje a mi perro Bruno al hogar, tengo alguien quien me
-                espere en casa, es un miembro mas de la familia.
+                Con Bruno en el hogar, tengo alguien quien me espere en casa, es
+                un miembro mas de la familia.
               </Card.Text>
             </Card.Body>
           </Card>
