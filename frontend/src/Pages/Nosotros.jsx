@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
+import Carousel from "react-bootstrap/Carousel";
 
 const Nosotros = () => {
   return (
@@ -90,6 +91,83 @@ const Nosotros = () => {
           </section>
           <section className="row mt-5">
             <h2>Lo que dice la gente</h2>
+            <Carousel>
+              <Carousel.Item>
+                <div className="carousel-img">
+                  <img src="/user-4.jpg" alt="Ana" className="img-fluid" />
+                </div>
+                <Carousel.Caption>
+                  <div class="carousel-caption bg-img-color">
+                    <article>
+                      <aside>
+                        <p class="fs-4">
+                          <b>Ana y Ramona</b>
+                        </p>
+                      </aside>
+                      <aside class="d-none d-md-block">
+                        <p>
+                          “Gracias a Colitas Felices pude encontrar a mi nuevo
+                          mejor amigo, Toby. El proceso de adopción fue muy
+                          sencillo y claro, y me sentí acompañada en todo
+                          momento. Estoy muy feliz con mi nueva mascota,
+                          ¡gracias por hacer esto posible!”
+                        </p>
+                      </aside>
+                    </article>
+                  </div>
+                </Carousel.Caption>
+              </Carousel.Item>
+              <Carousel.Item>
+                <div className="carousel-img">
+                  <img src="/user-5.jpg" alt="Ana" className="img-fluid" />
+                </div>
+                <Carousel.Caption>
+                  <div class="carousel-caption bg-img-color">
+                    <article>
+                      <aside>
+                        <p class="fs-4">
+                          <b>Carlos y Luna</b>
+                        </p>
+                      </aside>
+                      <aside class="d-none d-md-block">
+                        <p>
+                          “Adoptar a Luna a través de Colitas Felices ha sido la
+                          mejor decisión. La página es súper amigable y fácil de
+                          usar. El equipo siempre estuvo dispuesto a responder
+                          mis dudas y me ayudaron a encontrar la mascota
+                          perfecta para mi familia.”
+                        </p>
+                      </aside>
+                    </article>
+                  </div>
+                </Carousel.Caption>
+              </Carousel.Item>
+              <Carousel.Item>
+                <div className="carousel-img">
+                  <img src="/user-6.jpg" alt="Ana" className="img-fluid" />
+                </div>
+                <Carousel.Caption>
+                  <div class="carousel-caption bg-img-color">
+                    <article>
+                      <aside>
+                        <p class="fs-4">
+                          <b>Laura y Canela</b>
+                        </p>
+                      </aside>
+                      <aside class="d-none d-md-block">
+                        <p>
+                          “No podemos estar más felices con nuestra nueva
+                          integrante, Canela. Gracias a Colitas Felices el
+                          proceso fue muy organizado y lleno de amor por los
+                          animales. Se nota que realmente se preocupan por cada
+                          adopción. ¡Recomendado al 100%!”
+                        </p>
+                      </aside>
+                    </article>
+                  </div>
+                </Carousel.Caption>
+              </Carousel.Item>
+            </Carousel>
           </section>
         </div>
       </main>

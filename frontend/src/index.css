@@ -51,6 +51,17 @@ body {
   background-position: center;
 }
 
+.carousel-img {
+  width: auto;
+  height: 500px;
+}
+
+.carousel-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .custom-card {
   width: 354px; /* Fijar el ancho de todas las tarjetas */
   height: 388px; /* Fijar la altura de todas las tarjetas */
