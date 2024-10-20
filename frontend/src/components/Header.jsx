@@ -13,7 +13,7 @@ const Header = () => {
             Dale la oportunidad de una mejor vida a una mascota y llévate un
             poco de felicidad a casa.
           </p>
-          <a className="btn btn-lg bg-first-color mb-5" href="/mascotas">
+          <a className="btn btn-lg btn-success mb-5" href="/mascotas">
             <b>Quiero Adoptar!</b>
           </a>
         </div>

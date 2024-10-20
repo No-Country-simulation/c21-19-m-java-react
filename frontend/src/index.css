@@ -31,6 +31,17 @@ body {
 }
 
 /* ***************Bootstrap Styles*********************** */
+.btn {
+  border: none;
+}
+
+.btn-success {
+  background-color: var(--first-color) !important;
+}
+
+.btn-success:hover {
+  background-color: var(--first-alpha-color) !important;
+}
 
 .nav-link {
   margin-left: 0.5rem;
