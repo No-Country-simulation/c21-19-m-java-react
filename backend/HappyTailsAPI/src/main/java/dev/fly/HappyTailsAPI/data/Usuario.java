@@ -28,7 +28,7 @@ public class Usuario {
     @Convert(converter = TrueFalseConverter.class)
     private Boolean estado;
     
-    @OneToMany(mappedBy = "usuario", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
+    @OneToMany(mappedBy = "usuario", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private Set<Adopcion> adopciones;
