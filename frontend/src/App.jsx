@@ -8,6 +8,8 @@ import Contacto from "./Pages/Contacto.jsx";
 import BarraNav from "./components/BarraNav.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Gracias from "./Pages/Gracias.jsx";
+import Login from "./Pages/Login.jsx";
+import Registro from "./Pages/Registro.jsx";
 
 function App() {
   return (
@@ -15,7 +17,9 @@ function App() {
       <BrowserRouter>
         <BarraNav />
         <Routes>
-          <Route path="/" element={<Inicio />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/registro" element={<Registro />} />
+          <Route path="/inicio" element={<Inicio />} />
           <Route path="/mascotas" element={<Mascotas />} />
           <Route path="/nosotros" element={<Nosotros />} />
           <Route path="/contacto" element={<Contacto />} />
