@@ -55,7 +55,7 @@ public class IUsuarios implements UsuarioServices {
         usuario.setDni(data.getDni());
         usuario.setNombre(data.getNombre());
         usuario.setCorreo(data.getCorreo());
-        usuario.setClave(data.getClave());
+        usuario.setClave(data.getClave()); usuario.setNombre(data.getNombre());
         usuario.setEstado(data.getEstado()!= null ? data.getEstado() : true);
         
         log.info("Nuevo usuario creado con documento: {}", usuario.getDni());

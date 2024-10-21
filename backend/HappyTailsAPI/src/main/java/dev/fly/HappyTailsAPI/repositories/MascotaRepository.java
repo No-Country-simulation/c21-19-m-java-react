@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 import java.util.Map;
 
-public interface MacotaRepository extends JpaRepository<Mascotas, String> {
+public interface MascotaRepository extends JpaRepository<Mascotas, String> {
     @Query(value = "select " +
             "nombre, especie, raza, estado, medida, edad " +
             "from mascotas.mascotas " +
