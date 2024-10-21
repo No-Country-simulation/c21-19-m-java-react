@@ -13,6 +13,12 @@ public interface AdministradorRepository extends JpaRepository<Administrador, St
     @Query(value = "select " +
             "alias, nombre, estado, correo " +
             "from mascotas.administrador " +
+            "where estado = LOWER('t') ", nativeQuery = true)
+    public List<Map<String, Object>> getAdministrador();
+
+    @Query(value = "select " +
+            "alias, nombre, estado, correo " +
+            "from mascotas.administrador " +
             "where estado = LOWER(:estado) ", nativeQuery = true)
-    public List<Map<String, Object>> getUsuarios(@Param("estado") String estado);
+    public List<Map<String, Object>> getEstadoAdministrador(@Param("estado") String estado);
 }
