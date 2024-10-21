@@ -7,6 +7,7 @@ import Nosotros from "./Pages/Nosotros.jsx";
 import Contacto from "./Pages/Contacto.jsx";
 import BarraNav from "./components/BarraNav.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Gracias from "./Pages/Gracias.jsx";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/mascotas" element={<Mascotas />} />
           <Route path="/nosotros" element={<Nosotros />} />
           <Route path="/contacto" element={<Contacto />} />
+          <Route path="/gracias" element={<Gracias />} />
         </Routes>
         <Footer />
       </BrowserRouter>

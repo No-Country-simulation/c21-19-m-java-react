@@ -31,6 +31,17 @@ body {
 }
 
 /* ***************Bootstrap Styles*********************** */
+.btn {
+  border: none;
+}
+
+.btn-success {
+  background-color: var(--first-color) !important;
+}
+
+.btn-success:hover {
+  background-color: var(--first-alpha-color) !important;
+}
 
 .nav-link {
   margin-left: 0.5rem;
@@ -49,6 +60,28 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+}
+
+.carousel-img {
+  width: auto;
+  height: 500px;
+}
+
+.carousel-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.custom-card {
+  width: 354px; /* Fijar el ancho de todas las tarjetas */
+  height: 388px; /* Fijar la altura de todas las tarjetas */
+}
+
+.custom-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* La imagen rellena la tarjeta sin deformarse */
 }
 
 .img-brand img {
@@ -75,4 +108,20 @@ body {
 
 .bg-third-color {
   background-color: var(--third-color);
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .custom-card {
+    width: 334px; /* Fijar el ancho de todas las tarjetas */
+    height: 368px; /* Fijar la altura de todas las tarjetas */
+  }
+}
+
+/*  Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .custom-card {
+    width: 220px; /* Fijar el ancho de todas las tarjetas */
+    height: 240px; /* Fijar la altura de todas las tarjetas */
+  }
 }
