@@ -1,7 +1,6 @@
 package dev.fly.HappyTailsAPI.implementations;
 
 import dev.fly.HappyTailsAPI.data.Mascotas;
-import dev.fly.HappyTailsAPI.data.Usuario;
 import dev.fly.HappyTailsAPI.repositories.MascotaRepository;
 import dev.fly.HappyTailsAPI.services.MascotasServices;
 import java.util.List;

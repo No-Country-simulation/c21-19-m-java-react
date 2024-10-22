@@ -1,7 +1,6 @@
 package dev.fly.HappyTailsAPI.controllers;
 
 import dev.fly.HappyTailsAPI.data.Administrador;
-import dev.fly.HappyTailsAPI.data.Usuario;
 import dev.fly.HappyTailsAPI.services.AdministradorServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
