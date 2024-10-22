@@ -55,7 +55,8 @@ public class IUsuarios implements UsuarioServices {
         usuario.setDni(data.getDni());
         usuario.setNombre(data.getNombre());
         usuario.setCorreo(data.getCorreo());
-        usuario.setClave(data.getClave()); usuario.setNombre(data.getNombre());
+        usuario.setClave(data.getClave());
+        usuario.setImagen(data.getImagen());
         usuario.setEstado(data.getEstado()!= null ? data.getEstado() : true);
         
         log.info("Nuevo usuario creado con documento: {}", usuario.getDni());
@@ -72,6 +73,7 @@ public class IUsuarios implements UsuarioServices {
         editar.setNombre(data.getNombre());
         editar.setCorreo(data.getCorreo());
         editar.setClave(data.getClave());
+        editar.setImagen(data.getImagen());
         editar.setEstado(data.getEstado()!= null ? data.getEstado() : true);
         repository.save(editar);
         log.info("Se edito usuario creado con documento: {}", editar.getDni());

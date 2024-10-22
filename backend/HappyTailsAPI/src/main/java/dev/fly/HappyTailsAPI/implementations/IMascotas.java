@@ -59,6 +59,7 @@ public class IMascotas implements MascotasServices {
         registro.setEspecie(mascota.getEspecie());
         registro.setDescripcion(mascota.getDescripcion());
         registro.setEdad(mascota.getEdad());
+        registro.setImagen(mascota.getImagen());
         registro.setEstado(mascota.getEstado() != null ? mascota.getEstado() : true);
 
         log.info("Nuevo mascota creado con Id: {}", registro.getIdMascotas());
@@ -78,6 +79,7 @@ public class IMascotas implements MascotasServices {
         editar.setEspecie(data.getEspecie());
         editar.setDescripcion(data.getDescripcion());
         editar.setEdad(data.getEdad());
+        editar.setImagen(data.getImagen());
         editar.setEstado(data.getEstado() != null ? data.getEstado() : true);
         repository.save(editar);
         log.info("Se edito Mascota creado con Id: {}", editar.getIdMascotas());
