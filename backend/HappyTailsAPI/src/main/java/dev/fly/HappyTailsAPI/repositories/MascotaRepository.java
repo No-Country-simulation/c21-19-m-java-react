@@ -10,13 +10,13 @@ import java.util.Map;
 
 public interface MascotaRepository extends JpaRepository<Mascotas, String> {
     @Query(value = "select " +
-            "nombre, especie, raza, estado, medida, edad " +
+            "nombre, especie, raza, estado, medida, edad, imagen " +
             "from mascotas.mascotas " +
             "where estado = LOWER('t') ", nativeQuery = true)
     public List<Map<String, Object>> getMascotas();
 
     @Query(value = "select " +
-            "nombre, especie, raza, estado, medida, edad " +
+            "nombre, especie, raza, estado, medida, edad, imagen " +
             "from mascotas.mascotas " +
             "where estado = LOWER(:estado) ", nativeQuery = true)
     public List<Map<String, Object>> getEstadoMascotas(@Param("estado") String estado);

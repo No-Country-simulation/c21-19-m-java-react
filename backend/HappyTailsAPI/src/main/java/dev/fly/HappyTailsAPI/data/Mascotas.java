@@ -29,6 +29,9 @@ public class Mascotas {
     private String descripcion;
     @Column(length = 20, nullable = false)
     private String edad;
+    @Column(length = 255, nullable = true)
+    private String imagen;
+    
 
     @Column(nullable = false)
     @Convert(converter = TrueFalseConverter.class)

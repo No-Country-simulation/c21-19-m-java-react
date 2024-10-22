@@ -23,6 +23,8 @@ public class Usuario {
     private String correo;
     @Column(length = 12, nullable = false)
     private String clave;
+    @Column(length = 255, nullable = true)
+    private String imagen;
 
     @Column(nullable = false)
     @Convert(converter = TrueFalseConverter.class)
