@@ -19,23 +19,23 @@ public class RegistrosController {
     @Autowired
     private RegistroService services;
 
-    @GetMapping("/registros")
-    public List<Map<String, Object>> usuarios(){
+    @GetMapping("/registro")
+    public List<Map<String, Object>> registro(){
         return services.registros();
     }
 
-    @GetMapping("/registros/{estado}")
-    public List<Map<String, Object>> estadoUsuarios(@PathVariable String estado){
+    @GetMapping("/registro/{estado}")
+    public List<Map<String, Object>> estadoRegistro(@PathVariable String estado){
         return services.registrosPorEstado(estado);
     }
 
-    @PostMapping("/registros")
+    @PostMapping("/registro")
     public Registro añadirRegistro(@RequestBody RegistroInput registro){
         return services.registroAdminMascotas(registro);
     }
 
-    @DeleteMapping("/registros/{alias}/{idmascota}")
-    public void eliminarUsuario(@PathVariable String alias, @PathVariable Integer idmascota){
+    @DeleteMapping("/registro/{alias}/{idmascota}")
+    public void eliminarRegistro(@PathVariable String alias, @PathVariable Integer idmascota){
         RegistroLlaveCompuesta id = new RegistroLlaveCompuesta(alias, idmascota);
         services.eliminarRegistro(id);
     }

@@ -53,9 +53,9 @@ public class IRegistro implements RegistroService {
         Administrador admin = new Administrador();
         admin.setAlias(data.alias);
         Mascotas mascotas = new Mascotas();
-        mascotas.setIdMascotas(data.idMascoda);
+        mascotas.setIdMascotas(data.idMascota);
 
-        RegistroLlaveCompuesta id = new RegistroLlaveCompuesta(data.alias, data.idMascoda);
+        RegistroLlaveCompuesta id = new RegistroLlaveCompuesta(data.alias, data.idMascota);
 
         registro.setId(id);
         registro.setFechaRegistro(data.fechaRegistro);
