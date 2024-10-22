@@ -9,7 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class MascotasLlaveCompuesta implements Serializable{
+public class AdopcionLlaveCompuesta implements Serializable{
     private int dniUsuario; 
     private int mascotasId;
 }

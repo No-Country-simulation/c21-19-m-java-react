@@ -1,6 +1,6 @@
 package dev.fly.HappyTailsAPI.data;
 
-import dev.fly.HappyTailsAPI.utils.MascotasLlaveCompuesta;
+import dev.fly.HappyTailsAPI.utils.AdopcionLlaveCompuesta;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,7 +17,7 @@ import lombok.ToString;
 public class Adopcion {
 
     @EmbeddedId
-    private MascotasLlaveCompuesta id;
+    private AdopcionLlaveCompuesta id;
 
     @Column(nullable = false)
     private String fechaAdopcion;
