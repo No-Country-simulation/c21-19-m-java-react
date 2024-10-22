@@ -16,7 +16,7 @@ public interface RegistroRepository extends JpaRepository<Registro, String> {
             "from mascotas.mascotas masc " +
             "inner join mascotas.registro regi on masc.id_mascotas = regi.mascotas_id " +
             "inner join mascotas.administrador admi on admi.alias = regi.administrador " +
-            "where projects.name = LOWER('t') ", nativeQuery = true)
+            "where masc.estado = LOWER('t') ", nativeQuery = true)
     public List<Map<String, Object>> getRegistros();
 
     @Query(value = "select " +
@@ -26,6 +26,6 @@ public interface RegistroRepository extends JpaRepository<Registro, String> {
             "from mascotas.mascotas masc " +
             "inner join mascotas.registro regi on masc.id_mascotas = regi.mascotas_id " +
             "inner join mascotas.administrador admi on admi.alias = regi.administrador " +
-            "where projects.name = LOWER(:estado) ", nativeQuery = true)
+            "where masc.estado = LOWER(:estado) ", nativeQuery = true)
     public List<Map<String, Object>> getEstadoRegistros(@Param("estado") String estado);
 }

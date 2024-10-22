@@ -1,5 +1,6 @@
 package dev.fly.HappyTailsAPI.data;
 
+import dev.fly.HappyTailsAPI.utils.MascotasLlaveCompuesta;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

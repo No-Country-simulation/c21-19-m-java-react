@@ -1,4 +1,4 @@
-package dev.fly.HappyTailsAPI.data;
+package dev.fly.HappyTailsAPI.utils;
 
 import jakarta.persistence.Embeddable;
 import java.io.Serializable;

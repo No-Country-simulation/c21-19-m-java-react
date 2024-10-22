@@ -1,5 +1,6 @@
 package dev.fly.HappyTailsAPI.data;
 
+import dev.fly.HappyTailsAPI.utils.RegistroLlaveCompuesta;
 import jakarta.persistence.*;
 import lombok.*;
 
