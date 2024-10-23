@@ -54,6 +54,21 @@ body {
   color: var(--first-color);
 }
 /* ***************My Styles*********************** */
+.bg-second-alpha-color {
+  background-color: var(--second-alpha-color);
+}
+
+.bg-img-color {
+  background-color: var(--bg-img-color);
+}
+
+.bg-first-color {
+  background-color: var(--first-color);
+}
+
+.bg-third-color {
+  background-color: var(--third-color);
+}
 
 .bg-hero-image {
   background-image: var(--bg-image);
@@ -94,20 +109,37 @@ body {
   height: 7rem;
 }
 
-.bg-second-alpha-color {
-  background-color: var(--second-alpha-color);
+.modal {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: none;
+  justify-content: center;
+  align-items: center;
 }
 
-.bg-img-color {
-  background-color: var(--bg-img-color);
+.modal.is-open {
+  display: flex;
 }
 
-.bg-first-color {
-  background-color: var(--first-color);
+.modal-container {
+  position: relative;
+  padding: 1rem;
+  min-width: 320px;
+  max-width: 480px;
+  min-height: 200px;
+  max-height: 600px;
+  background-color: #fff;
 }
 
-.bg-third-color {
-  background-color: var(--third-color);
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
 }
 
 /* Medium devices (tablets, 768px and up) */

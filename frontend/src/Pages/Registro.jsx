@@ -2,8 +2,12 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import useAuthentication from "../hooks/useAuthentication";
 import defaultRegister from "../utils/defaultRegister";
+import Modal from "../components/Modal";
+import { useModal } from "../hooks/useModal";
 
 const Registro = () => {
+  const [isOpen, openModal, closeModal] = useModal(false);
+
   const { register, handleSubmit, reset } = useForm();
 
   const { createUser } = useAuthentication();
@@ -16,7 +20,7 @@ const Registro = () => {
   return (
     <div className="pt-5">
       <div className="container">
-        <form onSubmit={handleSubmit(submit)}>
+        <form onSubmit={(handleSubmit(submit), openModal)}>
           <h2 className="mb-3">Completa tu información</h2>
           <div className="mb-3">
             <label className="form-label" htmlFor="nombre">
@@ -65,6 +69,10 @@ const Registro = () => {
           <input className="btn btn-lg btn-success" type="submit" />
         </form>
       </div>
+      <Modal isOpen={isOpen} closeModal={closeModal}>
+        <h3>Modal 1</h3>
+        <p>Hola Modal 1</p>
+      </Modal>
     </div>
   );
 };
