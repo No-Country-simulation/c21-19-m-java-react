@@ -17,7 +17,7 @@ function App() {
       <BrowserRouter>
         <BarraNav />
         <Routes>
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Login />} />
           <Route path="/registro" element={<Registro />} />
           <Route path="/inicio" element={<Inicio />} />
           <Route path="/mascotas" element={<Mascotas />} />

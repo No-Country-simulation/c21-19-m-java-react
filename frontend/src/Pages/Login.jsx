@@ -17,7 +17,6 @@ const Login = () => {
       <div className="container">
         <form onSubmit={handleSubmit(submit)}>
           <h2 className="mb-3">Iniciar Sesión</h2>
-
           <div className="mb-3">
             <label className="form-label" htmlFor="correo">
               Correo Electrónico
@@ -41,6 +40,10 @@ const Login = () => {
             />
           </div>
           <input className="btn btn-lg btn-success" type="submit" />
+          <br />
+          <p className="mt-3">
+            ¿No estás registrado? <a href="/registro">Registrate</a>
+          </p>
         </form>
       </div>
     </div>

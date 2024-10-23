@@ -16,7 +16,7 @@ function BarraNav() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link className="nav-link" href="/">
+            <Nav.Link className="nav-link" href="/inicio">
               Inicio
             </Nav.Link>
             <Nav.Link className="nav-link" href="/mascotas">
