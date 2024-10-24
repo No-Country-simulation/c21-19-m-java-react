@@ -4,7 +4,9 @@ import Header from "../components/Header";
 const Mascotas = () => {
   return (
     <>
-      <Header />
+      <div className="container">
+        <Header />
+      </div>
     </>
   );
 };

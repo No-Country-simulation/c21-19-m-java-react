@@ -142,6 +142,21 @@ body {
   right: 1rem;
 }
 
+.social-icon {
+  width: 20px;
+  height: 20px;
+  /*   fill: var(--link-color);
+  transition: all 0.3s ease-out; */
+}
+
+/* .social-icon:hover {
+  fill: var(--first-color);
+} */
+
+small {
+  display: inline-block;
+}
+
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
   .custom-card {
