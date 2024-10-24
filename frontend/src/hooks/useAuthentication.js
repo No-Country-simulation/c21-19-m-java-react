@@ -2,7 +2,7 @@ import axios from "axios";
 
 const useAuthentication = () => {
   const createUser = (data) => {
-    const url = "url";
+    const url = "http://localhost:8080/colitasFelices/usuarios";
     axios
       .post(url, data)
       .then((res) => console.log(res.data))
@@ -10,7 +10,7 @@ const useAuthentication = () => {
   };
 
   const loginUser = (data) => {
-    const url = "url";
+    const url = "http://localhost:8080/colitasFelices/usuarios";
     axios
       .post(url, data)
       .then((res) => console.log(res.data))
