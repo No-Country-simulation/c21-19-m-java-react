@@ -12,21 +12,23 @@ export function Footer() {
           src="./icon.png"
           alt="icono colitas felices"
         />
-        <nav className="d-flex justify-content-evenly">
-          <a href="https://facebook.com" target="_blank">
-            <img src={facebook} alt="facebook" />
+        <nav className="d-flex justify-content-center mt-3">
+          <a className="mx-3" href="https://facebook.com" target="_blank">
+            <img className="social-icon" src={facebook} alt="facebook" />
           </a>
-          <a href="https://instagram.com" target="_blank">
-            <img src={instagram} alt="instagram" />
+          <a className="mx-3" href="https://instagram.com" target="_blank">
+            <img className="social-icon" src={instagram} alt="instagram" />
           </a>
-          <a href="https://x.com" target="_blank">
-            <img src={x} alt="x" />
+          <a className="mx-3" href="https://x.com" target="_blank">
+            <img className="social-icon" src={x} alt="x" />
           </a>
-          <a href="https://youtube.com" target="_blank">
-            <img src={youtube} alt="youtube" />
+          <a className="mx-3" href="https://youtube.com" target="_blank">
+            <img className="social-icon" src={youtube} alt="youtube" />
           </a>
         </nav>
-        <small>&copy; 2024 Colitas Felices. Hecho con fines educativos. </small>
+        <small className="mt-3">
+          &copy; 2024 Colitas Felices. Hecho con fines educativos.{" "}
+        </small>
       </div>
     </section>
   );
