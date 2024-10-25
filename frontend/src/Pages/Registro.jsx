@@ -1,33 +1,50 @@
-import React from "react";
-import { useForm } from "react-hook-form";
-import useAuthentication from "../hooks/useAuthentication";
-import defaultRegister from "../utils/defaultRegister";
+import { useState } from "react";
+
 import Modal from "../components/Modal";
 import { useModal } from "../hooks/useModal";
+import { postDatos } from "../utils/apiHandler";
+import { urlUsuario } from "../utils/urls";
 
 const Registro = () => {
+
+  const[dni, setDni] = useState(0);
+  const[nombre, setNombre] = useState("");
+  const[correo, setCorreo] = useState("");
+  const[clave, setClave] = useState("");
+  
   const [isOpen, openModal, closeModal] = useModal(false);
 
-  const { register, handleSubmit, reset } = useForm();
+  const handleSubmit = async (event) => {
+    
+    event.preventDefault();
 
-  const { createUser } = useAuthentication();
+    const data = {
+      dni,
+      nombre,
+      correo,
+      clave
+    }
 
-  const submit = (data) => {
-    createUser(data);
-    reset(defaultRegister);
-  };
+    try {
+      await postDatos(urlUsuario,data);
+      openModal();
+    } catch (error) {
+      console.error("Error al enviar datos", error);
+    }
+
+  }
 
   return (
     <div className="pt-5">
       <div className="container">
-        <form onSubmit={(handleSubmit(submit), openModal)}>
+        <form onSubmit={handleSubmit}>
           <h2 className="mb-3">Completa tu información</h2>
           <div className="mb-3">
             <label className="form-label" htmlFor="nombre">
               Nombre Completo
             </label>
             <input
-              {...register("nombre")}
+              onChange={(e) => setNombre(e.target.value)}
               className="form-control"
               type="text"
               id="nombre"
@@ -38,7 +55,7 @@ const Registro = () => {
               Documento de Identificación
             </label>
             <input
-              {...register("dni")}
+              onChange={(e) => setDni(e.target.value)}
               className="form-control"
               type="number"
               id="dni"
@@ -49,7 +66,7 @@ const Registro = () => {
               Correo Electrónico
             </label>
             <input
-              {...register("correo")}
+              onChange={(e) => setCorreo(e.target.value)}
               className="form-control"
               type="email"
               id="correo"
@@ -60,7 +77,7 @@ const Registro = () => {
               Contraseña
             </label>
             <input
-              {...register("clave")}
+              onChange={(e) => setClave(e.target.value)}
               className="form-control"
               type="password"
               id="clave"

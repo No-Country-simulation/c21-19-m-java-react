@@ -1,12 +1,22 @@
-import React from "react";
 import { useForm } from "react-hook-form";
 import useAuthentication from "../hooks/useAuthentication";
 import defaultRegister from "../utils/defaultRegister";
+import { getDatos } from "../utils/apiHandler";
+import { urlAdmin, urlUsuario } from "../utils/urls";
 
 const Login = () => {
   const { register, handleSubmit, reset } = useForm();
 
   const { loginUser } = useAuthentication();
+
+  const validacion = async() => {
+    const usuario = await getDatos(urlUsuario);
+    const admin = await getDatos(urlAdmin);
+    console.log("Usuario:", usuario);
+    console.log("Admin:",admin)
+  }
+
+  validacion();
 
   const submit = (data) => {
     loginUser(data);

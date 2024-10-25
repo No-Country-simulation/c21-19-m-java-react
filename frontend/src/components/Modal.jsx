@@ -1,5 +1,3 @@
-import React from "react";
-
 const Modal = ({ children, isOpen, closeModal }) => {
   return (
     <article className={`modal ${isOpen && `is-open`} `}>

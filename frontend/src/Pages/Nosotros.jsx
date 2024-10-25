@@ -1,4 +1,3 @@
-import React from "react";
 import Card from "react-bootstrap/Card";
 import Carousel from "react-bootstrap/Carousel";
 
@@ -97,14 +96,14 @@ const Nosotros = () => {
                   <img src="/user-4.jpg" alt="Ana" className="img-fluid" />
                 </div>
                 <Carousel.Caption>
-                  <div class="carousel-caption bg-img-color">
+                  <div className="carousel-caption bg-img-color">
                     <article>
                       <aside>
-                        <p class="fs-4">
+                        <p className="fs-4">
                           <b>Ana y Ramona</b>
                         </p>
                       </aside>
-                      <aside class="d-none d-md-block">
+                      <aside className="d-none d-md-block">
                         <p>
                           “Gracias a Colitas Felices pude encontrar a mi nuevo
                           mejor amigo, Toby. El proceso de adopción fue muy
@@ -122,14 +121,14 @@ const Nosotros = () => {
                   <img src="/user-5.jpg" alt="Ana" className="img-fluid" />
                 </div>
                 <Carousel.Caption>
-                  <div class="carousel-caption bg-img-color">
+                  <div className="carousel-caption bg-img-color">
                     <article>
                       <aside>
-                        <p class="fs-4">
+                        <p className="fs-4">
                           <b>Carlos y Luna</b>
                         </p>
                       </aside>
-                      <aside class="d-none d-md-block">
+                      <aside className="d-none d-md-block">
                         <p>
                           “Adoptar a Luna a través de Colitas Felices ha sido la
                           mejor decisión. La página es súper amigable y fácil de
@@ -147,14 +146,14 @@ const Nosotros = () => {
                   <img src="/user-6.jpg" alt="Ana" className="img-fluid" />
                 </div>
                 <Carousel.Caption>
-                  <div class="carousel-caption bg-img-color">
+                  <div className="carousel-caption bg-img-color">
                     <article>
                       <aside>
-                        <p class="fs-4">
+                        <p className="fs-4">
                           <b>Laura y Canela</b>
                         </p>
                       </aside>
-                      <aside class="d-none d-md-block">
+                      <aside className="d-none d-md-block">
                         <p>
                           “No podemos estar más felices con nuestra nueva
                           integrante, Canela. Gracias a Colitas Felices el
