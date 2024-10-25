@@ -1,17 +1,15 @@
 import { useState } from "react";
-
 import Modal from "../components/Modal";
 import { useModal } from "../hooks/useModal";
 import { postDatos } from "../utils/apiHandler";
 import { urlUsuario } from "../utils/urls";
 
 const Registro = () => {
+  const [dni, setDni] = useState(0);
+  const [nombre, setNombre] = useState("");
+  const [correo, setCorreo] = useState("");
+  const [clave, setClave] = useState("");
 
-  const[dni, setDni] = useState(0);
-  const[nombre, setNombre] = useState("");
-  const[correo, setCorreo] = useState("");
-  const[clave, setClave] = useState("");
-  
   const [isOpen, openModal, closeModal] = useModal(false);
 
   const handleSubmit = async (event) => {
@@ -23,16 +21,21 @@ const Registro = () => {
       nombre,
       correo,
       clave
-    }
+    };
 
     try {
-      await postDatos(urlUsuario,data);
+      await postDatos(urlUsuario, data);
       openModal();
+
+      setDni(0);
+      setNombre("");
+      setCorreo("");
+      setClave("");
+
     } catch (error) {
       console.error("Error al enviar datos", error);
     }
-
-  }
+  };
 
   return (
     <div className="pt-5">
@@ -48,6 +51,7 @@ const Registro = () => {
               className="form-control"
               type="text"
               id="nombre"
+              value={nombre}
             />
           </div>
           <div className="mb-3">
@@ -59,6 +63,7 @@ const Registro = () => {
               className="form-control"
               type="number"
               id="dni"
+              value={dni?dni:""}
             />
           </div>
           <div className="mb-3">
@@ -70,6 +75,7 @@ const Registro = () => {
               className="form-control"
               type="email"
               id="correo"
+              value={correo}
             />
           </div>
           <div className="mb-3">
@@ -81,9 +87,13 @@ const Registro = () => {
               className="form-control"
               type="password"
               id="clave"
+              value={clave}
             />
           </div>
-          <input className="btn btn-lg btn-success" type="submit" />
+          <input
+            className="btn btn-lg btn-success"
+            type="submit"
+          />
         </form>
       </div>
       <Modal isOpen={isOpen} closeModal={closeModal}>

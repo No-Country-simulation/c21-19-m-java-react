@@ -11,7 +11,6 @@ const Mascotas = () => {
     const obtenerDatos = async() => {
       try {        
         const datos = await getDatos(urlMascota);
-        console.log(datos)
         setMascotas(datos);
       } catch (error) {
         console.error("Error al obtener los datos:", error)

@@ -1,63 +1,105 @@
-import { useForm } from "react-hook-form";
-import useAuthentication from "../hooks/useAuthentication";
-import defaultRegister from "../utils/defaultRegister";
+import { useCallback, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { getDatos } from "../utils/apiHandler";
 import { urlAdmin, urlUsuario } from "../utils/urls";
 
 const Login = () => {
-  const { register, handleSubmit, reset } = useForm();
+	const navigate = useNavigate();
 
-  const { loginUser } = useAuthentication();
+	const [correo, setCorreo] = useState("");
+	const [clave, setClave] = useState("");
 
-  const validacion = async() => {
-    const usuario = await getDatos(urlUsuario);
-    const admin = await getDatos(urlAdmin);
-    console.log("Usuario:", usuario);
-    console.log("Admin:",admin)
-  }
+	const [usuario, setUsuario] = useState([]);
+	const [administrador, setAdministrador] = useState([]);
 
-  validacion();
+	useEffect(() => {
+		const cargarDatos = async () => {
+			try {
+				const datosUsuarios = await getDatos(urlUsuario);
+				setUsuario(datosUsuarios);
+				const datosAdmins = await getDatos(urlAdmin);
+				setAdministrador(datosAdmins);
+			} catch (error) {
+				console.log("Error al cargar datos:", error);
+			}
+		};
+		cargarDatos();
+	}, []);
 
-  const submit = (data) => {
-    loginUser(data);
-    reset(defaultRegister);
-  };
-  return (
-    <div className="pt-5">
-      <div className="container">
-        <form onSubmit={handleSubmit(submit)}>
-          <h2 className="mb-3">Iniciar Sesión</h2>
-          <div className="mb-3">
-            <label className="form-label" htmlFor="correo">
-              Correo Electrónico
-            </label>
-            <input
-              {...register("correo")}
-              className="form-control"
-              type="email"
-              id="correo"
-            />
-          </div>
-          <div className="mb-3">
-            <label className="form-label" htmlFor="clave">
-              Contraseña
-            </label>
-            <input
-              {...register("clave")}
-              className="form-control"
-              type="password"
-              id="clave"
-            />
-          </div>
-          <input className="btn btn-lg btn-success" type="submit" />
-          <br />
-          <p className="mt-3">
-            ¿No estás registrado? <a href="/registro">Registrate</a>
-          </p>
-        </form>
-      </div>
-    </div>
-  );
+	const validacionCredenciales = useCallback(
+		(correo, clave) => {
+			const registro = {
+				adoptante: usuario.some(
+					(usuario) =>
+						usuario.correo === correo && usuario.clave === clave
+				),
+				administrador: administrador.some(
+					(admin) => admin.correo === correo && admin.clave === clave
+				),
+			};
+			/**En app
+       * useEffect(() => {
+        const isAuthenticated = localStorage.getItem("isAuthenticated");
+        if (isAuthenticated !== "true") {
+            navigate("/login"); // Redirigir al login si no está autenticado
+        }
+    }, [navigate]);
+       */
+			//Pendiente vistas admin y usuario agregar localStorage.setItem("isAuthenticated", "true");
+			if (registro.adoptante) navigate("/mascotas");
+			if (registro.administrador) navigate("/nosotros");
+		},
+		[usuario, administrador, navigate]
+	);
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		validacionCredenciales(correo, clave);
+		setCorreo("");
+		setClave("");
+	};
+
+	return (
+		<div className="pt-5">
+			<div className="container">
+				<form onSubmit={handleSubmit}>
+					<h2 className="mb-3">Iniciar Sesión</h2>
+					<div className="mb-3">
+						<label className="form-label" htmlFor="correo">
+							Correo Electrónico
+						</label>
+						<input
+							onChange={(e) => setCorreo(e.target.value)}
+							className="form-control"
+							type="email"
+							id="correo"
+							value={correo}
+							required
+						/>
+					</div>
+					<div className="mb-3">
+						<label className="form-label" htmlFor="clave">
+							Contraseña
+						</label>
+						<input
+							onChange={(e) => setClave(e.target.value)}
+							className="form-control"
+							type="password"
+							id="clave"
+							value={clave}
+							required
+						/>
+					</div>
+					<input className="btn btn-lg btn-success" type="submit" />
+					<br />
+					<p className="mt-3">
+						¿No estás registrado? <a href="/registro">Registrate</a>
+					</p>
+				</form>
+			</div>
+		</div>
+	);
 };
 
 export default Login;
