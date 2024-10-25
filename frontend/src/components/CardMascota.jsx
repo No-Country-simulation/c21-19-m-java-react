@@ -4,7 +4,11 @@ const CardMascota = ({ animals }) => {
   return (
     <article className="card-animal">
       <header className="card-header">
-        <img src="/public/perro-1.jpg" alt="foto de animal" />
+        <img
+          className="card-img"
+          src="/public/perro-1.jpg"
+          alt="foto de animal"
+        />
       </header>
       <div className="card-body">
         <h3 className="card-title">{animals.nombre}</h3>
