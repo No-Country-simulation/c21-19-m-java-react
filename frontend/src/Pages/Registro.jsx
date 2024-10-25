@@ -1,55 +1,48 @@
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-import useAuthentication from "../hooks/useAuthentication";
-import defaultRegister from "../utils/defaultRegister";
+import { useState } from "react";
+
 import Modal from "../components/Modal";
 import { useModal } from "../hooks/useModal";
+import { postDatos } from "../utils/apiHandler";
+import { urlUsuario } from "../utils/urls";
 import axios from "axios";
 
 const Registro = () => {
-  const [isOpen, openModal, closeModal] = useModal(false);
-
-  /*  const { register, handleSubmit, reset } = useForm(); */
-  const { handleSubmit } = useForm();
-
-  /* const { createUser } = useAuthentication(); */
-
-  /*  const submit = (data) => {
-    createUser(data);
-    reset(defaultRegister);
-  }; */
-
+  const [dni, setDni] = useState(0);
   const [nombre, setNombre] = useState("");
   const [correo, setCorreo] = useState("");
-  const [dni, setDni] = useState(0);
   const [clave, setClave] = useState("");
 
-  const postUsuarios = async (e) => {
-    e.preventDefault();
-    let url = "http://localhost:8080/colitasFelices/usuarios";
-    await axios.post(url, {
+  const [isOpen, openModal, closeModal] = useModal(false);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const data = {
+      dni,
       nombre,
       correo,
-      dni,
       clave,
-    });
+    };
+
+    try {
+      await postDatos(urlUsuario, data);
+      openModal();
+    } catch (error) {
+      console.error("Error al enviar datos", error);
+    }
   };
 
   return (
     <div className="pt-5">
       <div className="container">
-        {/* <form onSubmit={(handleSubmit(submit), openModal)}> */}
-        <form>
+        <form onSubmit={handleSubmit}>
           <h2 className="mb-3">Completa tu información</h2>
           <div className="mb-3">
             <label className="form-label" htmlFor="nombre">
               Nombre Completo
             </label>
             <input
-              /*   {...register("nombre")} */
-              onChange={(e) => {
-                setNombre(e.target.value);
-              }}
+              onChange={(e) => setNombre(e.target.value)}
               className="form-control"
               type="text"
               id="nombre"
@@ -60,10 +53,7 @@ const Registro = () => {
               Documento de Identificación
             </label>
             <input
-              /*   {...register("dni")} */
-              onChange={(e) => {
-                setDni(e.target.value);
-              }}
+              onChange={(e) => setDni(e.target.value)}
               className="form-control"
               type="number"
               id="dni"
@@ -74,10 +64,7 @@ const Registro = () => {
               Correo Electrónico
             </label>
             <input
-              /* {...register("correo")} */
-              onChange={(e) => {
-                setCorreo(e.target.value);
-              }}
+              onChange={(e) => setCorreo(e.target.value)}
               className="form-control"
               type="email"
               id="correo"
@@ -88,10 +75,7 @@ const Registro = () => {
               Contraseña
             </label>
             <input
-              /* {...register("clave")} */
-              onChange={(e) => {
-                setClave(e.target.value);
-              }}
+              onChange={(e) => setClave(e.target.value)}
               className="form-control"
               type="password"
               id="clave"
