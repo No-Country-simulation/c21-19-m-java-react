@@ -1,10 +1,8 @@
 import { useState } from "react";
-
 import Modal from "../components/Modal";
 import { useModal } from "../hooks/useModal";
 import { postDatos } from "../utils/apiHandler";
 import { urlUsuario } from "../utils/urls";
-import axios from "axios";
 
 const Registro = () => {
   const [dni, setDni] = useState(0);
