@@ -1,6 +1,4 @@
-import React from "react";
-import Header from "../components/Header";
-import CardMascota from "../components/CardMascota";
+import React, { useState } from "react";
 
 const initialDb = [
   {
@@ -95,17 +93,42 @@ const initialDb = [
   },
 ];
 
-const Mascotas = () => {
-  const [db, setDb] = useState(initialDb);
+const CardMascota = () => {
+  const [animals, setAninmals] = useState(initialDb);
 
   return (
-    <>
-      <div className="container">
-        <Header />
-        <CardMascota animals={db} />
-      </div>
-    </>
+    <div className="row">
+      {animals.map((animal) => {
+        return (
+          <div>
+            <h1>Hola mundo</h1>
+          </div>
+        );
+      })}
+    </div>
   );
 };
 
-export default Mascotas;
+export default CardMascota;
+
+/* const CardMascota = () => {
+  
+  return (
+    <article className="card-animal">
+      <header className="card-header">
+        <img
+          className="card-img"
+          src="/public/perro-1.jpg"
+          alt="foto de animal"
+        />
+      </header>
+      <div className="card-body">
+        <h3 className="card-title">{animals.nombre}</h3>
+        <p className="card-description"></p>
+        <button>Ver</button>
+      </div>
+    </article>
+  );
+}; 
+
+export default CardMascota;*/

@@ -79,11 +79,7 @@ const Registro = () => {
               id="clave"
             />
           </div>
-          <input
-            className="btn btn-lg btn-success"
-            type="submit"
-            onClick={postUsuarios}
-          />
+          <input className="btn btn-lg btn-success" type="submit" />
         </form>
       </div>
       <Modal isOpen={isOpen} closeModal={closeModal}>
