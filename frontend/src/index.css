@@ -95,10 +95,11 @@ body {
   transform: scale(1.03);
 }
 
-.grid-responsive {
+/* .grid-responsive {
   display: grid;
-  grid-template-columns: repeat(autofit, minmax(280px, 1fr));
-}
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1vw 1vh;
+} */
 
 .mascota-header {
   border-bottom: 1px solid #ccca;
