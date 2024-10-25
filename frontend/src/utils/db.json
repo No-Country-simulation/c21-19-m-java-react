@@ -1,0 +1,82 @@
+[
+  {
+    "nombre": "Max",
+    "descripcion": "Perro muy enérgico y amigable",
+    "raza": "Golden Retriever",
+    "edad": "3 años",
+    "tamano": "Grande",
+    "categoria": "Perro"
+  },
+  {
+    "nombre": "Luna",
+    "descripcion": "Gata tranquila y cariñosa",
+    "raza": "Siamesa",
+    "edad": "2 años",
+    "tamano": "Mediano",
+    "categoria": "Gato"
+  },
+  {
+    "nombre": "Rocky",
+    "descripcion": "Perro protector y leal",
+    "raza": "Pastor Alemán",
+    "edad": "5 años",
+    "tamano": "Grande",
+    "categoria": "Perro"
+  },
+  {
+    "nombre": "Mia",
+    "descripcion": "Gata juguetona y curiosa",
+    "raza": "Persa",
+    "edad": "1 año",
+    "tamano": "Pequeño",
+    "categoria": "Gato"
+  },
+  {
+    "nombre": "Charlie",
+    "descripcion": "Perro obediente y muy inteligente",
+    "raza": "Border Collie",
+    "edad": "4 años",
+    "tamano": "Mediano",
+    "categoria": "Perro"
+  },
+  {
+    "nombre": "Simba",
+    "descripcion": "Gato independiente y explorador",
+    "raza": "Maine Coon",
+    "edad": "6 años",
+    "tamano": "Grande",
+    "categoria": "Gato"
+  },
+  {
+    "nombre": "Bella",
+    "descripcion": "Perra cariñosa y tranquila",
+    "raza": "Labrador",
+    "edad": "2 años",
+    "tamano": "Grande",
+    "categoria": "Perro"
+  },
+  {
+    "nombre": "Toby",
+    "descripcion": "Perro juguetón y curioso",
+    "raza": "Beagle",
+    "edad": "3 años",
+    "tamano": "Mediano",
+    "categoria": "Perro"
+  },
+  {
+    "nombre": "Nina",
+    "descripcion": "Gata tímida pero muy cariñosa",
+    "raza": "Ragdoll",
+    "edad": "2 años",
+    "tamano": "Mediano",
+    "categoria": "Gato"
+  },
+  {
+    "nombre": "Rex",
+    "descripcion": "Perro muy activo y leal",
+    "raza": "Dóberman",
+    "edad": "5 años",
+    "tamano": "Grande",
+    "categoria": "Perro"
+  }
+]

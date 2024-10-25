@@ -10,13 +10,13 @@ import java.util.Map;
 
 public interface AdministradorRepository extends JpaRepository<Administrador, String> {
     @Query(value = "select " +
-            "alias, nombre, estado, correo " +
+            "alias, nombre, estado, correo, clave " +
             "from mascotas.administrador " +
             "where estado = LOWER('t') ", nativeQuery = true)
     public List<Map<String, Object>> getAdministrador();
 
     @Query(value = "select " +
-            "alias, nombre, estado, correo " +
+            "alias, nombre, estado, correo, clave " +
             "from mascotas.administrador " +
             "where estado = LOWER(:estado) ", nativeQuery = true)
     public List<Map<String, Object>> getEstadoAdministrador(@Param("estado") String estado);
