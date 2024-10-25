@@ -66,6 +66,10 @@ body {
   background-color: var(--first-color);
 }
 
+.bg-second-color {
+  background-color: var(--second-color);
+}
+
 .bg-third-color {
   background-color: var(--third-color);
 }
@@ -75,6 +79,55 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+}
+
+.card-mascota {
+  width: 100%;
+  max-width: 250px;
+  background-color: rgb(243, 235, 235);
+  transition: transform 200ms ease;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.card-mascota:hover {
+  transform: scale(1.03);
+}
+
+.grid-responsive {
+  display: grid;
+  grid-template-columns: repeat(autofit, minmax(280px, 1fr));
+}
+
+.mascota-header {
+  border-bottom: 1px solid #ccca;
+  padding: 1.3em;
+  width: 100%;
+  aspect-ratio: 1.5;
+  position: relative;
+}
+
+.mascota-img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  position: absolute;
+}
+
+.mascota-body {
+  padding: 1rem 1.5rem;
+  position: relative;
+}
+
+.mascota-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.mascota-raza {
+  font-size: 0.9rem;
+  color: var(--third-color);
 }
 
 .carousel-img {
