@@ -10,6 +10,7 @@ const CardMascota = () => {
       try {
         const datos = await getDatos(urlMascota);
         setMascotas(datos);
+        console.log(datos);
       } catch (error) {
         console.error("Error al obtener los datos:", error);
       }
