@@ -15,43 +15,42 @@ import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
-
-  const [autenticado, setAutenticado] = useState(null);
-
-  useEffect(() => {
-    const isAuthenticated = localStorage.getItem("autenticado") === "true";
-    setAutenticado(isAuthenticated);
-  }, []);
-
+	
+	const [usuario, setUsuario] = useState(null);
+  
+	const login = (perfil, correo, clave, datos) => {
+	  const info = { perfil, correo, clave, datos };
+	  setUsuario(info);
+	  localStorage.setItem("usuario", JSON.stringify(info));
+	};
+  
+	const logout = () => {
+	  setUsuario(null);
+	  localStorage.removeItem("usuario");
+	};
+  
+	useEffect(() => {
+	  const registro = localStorage.getItem("usuario");
+	  if (registro) setUsuario(JSON.parse(registro));
+	}, []);
+  
 	return (
-		<BrowserRouter>
-			<BarraNav />
-			<Routes>
-				<Route path="/" element={<Login setAutenticado={setAutenticado}/>} />
-				<Route path="/registro" element={<Registro />} />
-				<Route path="/inicio" element={<Inicio />} />
-				<Route
-					path="/mascotas"
-					element={
-						<ProtectedRoute autenticado={autenticado}>
-							<Mascotas />
-						</ProtectedRoute>
-					}
-				/>
-				<Route
-					path="/nosotros"
-					element={
-						<ProtectedRoute autenticado={autenticado}>
-							<Nosotros />
-						</ProtectedRoute>
-					}
-				/>
-				<Route path="/contacto" element={<Contacto />} />
-				<Route path="/gracias" element={<Gracias />} />
-			</Routes>
-			<Footer />
-		</BrowserRouter>
+	  <BrowserRouter>
+		<BarraNav ingreso={usuario} salida={logout} />
+		<Routes>
+		  <Route path="/" element={<Login ingreso={login} />} />
+		  <Route element={<ProtectedRoute ingreso={usuario} />}>
+			<Route path="/inicio" element={<Inicio />} />
+			<Route path="/mascotas" element={<Mascotas />} />
+			<Route path="/nosotros" element={<Nosotros />} />
+			<Route path="/contacto" element={<Contacto />} />
+			<Route path="/gracias" element={<Gracias />} />
+		  </Route>
+		  <Route path="/registro" element={<Registro />} />
+		</Routes>
+		<Footer />
+	  </BrowserRouter>
 	);
-}
-
-export default App;
+  };
+  
+  export default App;

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { getDatos } from "../utils/apiHandler";
 import { urlAdmin, urlUsuario } from "../utils/urls";
 
-const Login = ({setAutenticado}) => {
+const Login = ({ingreso}) => {
 	const navigate = useNavigate();
 
 	const [correo, setCorreo] = useState("");
@@ -30,27 +30,28 @@ const Login = ({setAutenticado}) => {
 	const validacionCredenciales = useCallback(
 		(correo, clave) => {
 			const registro = {
-				adoptante: usuario.some(
+				adoptante: usuario.find(
 					(usuario) =>
 						usuario.correo === correo && usuario.clave === clave
 				),
-				administrador: administrador.some(
+				administrador: administrador.find(
 					(admin) => admin.correo === correo && admin.clave === clave
 				),
 			};
 
 			if (registro.adoptante) {
-				localStorage.setItem("autenticado","true");
-				setAutenticado(true);
-				navigate("/mascotas");
-			};
-			if (registro.administrador) {
-				localStorage.setItem("autenticado","true");
-				setAutenticado(true);
-				navigate("/nosotros");
+				ingreso("adoptante", correo, clave,  registro.adoptante);
+				navigate("/inicio");
 			}
+			else if(registro.administrador){
+				ingreso("administrador",correo, clave,  registro.administrador);
+				navigate("/inicio");
+			}
+			else{
+				alert("Credenciales incorrectas");
+			} 
 		},
-		[usuario, administrador, navigate, setAutenticado]
+		[usuario, administrador, ingreso, navigate]
 	);
 
 	const handleSubmit = (event) => {
