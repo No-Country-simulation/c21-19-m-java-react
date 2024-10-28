@@ -25,6 +25,11 @@ const Registro = () => {
     try {
       await postDatos(urlUsuario, data);
       openModal();
+
+      setDni(0);
+      setNombre("");
+      setCorreo("");
+      setClave("");
     } catch (error) {
       console.error("Error al enviar datos", error);
     }
@@ -44,6 +49,7 @@ const Registro = () => {
               className="form-control"
               type="text"
               id="nombre"
+              value={nombre}
             />
           </div>
           <div className="mb-3">
@@ -55,6 +61,7 @@ const Registro = () => {
               className="form-control"
               type="number"
               id="dni"
+              value={dni ? dni : ""}
             />
           </div>
           <div className="mb-3">
@@ -66,6 +73,7 @@ const Registro = () => {
               className="form-control"
               type="email"
               id="correo"
+              value={correo}
             />
           </div>
           <div className="mb-3">
@@ -77,9 +85,9 @@ const Registro = () => {
               className="form-control"
               type="password"
               id="clave"
+              value={clave}
             />
           </div>
-          <input className="btn btn-lg btn-success" type="submit" />
         </form>
       </div>
       <Modal isOpen={isOpen} closeModal={closeModal}>
