@@ -1,5 +1,3 @@
-import Header from "../components/Header";
-import CardMascota from "../components/Mascotas/CardMascota";
 import SearchMascota from "../components/Mascotas/SearchMascota";
 
 const Mascotas = () => {

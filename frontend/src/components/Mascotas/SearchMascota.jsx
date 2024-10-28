@@ -54,6 +54,10 @@ const SearchMascota = () => {
               </header>
               <div className="mascota-body">
                 <h3 className="mascota-title">{mascota.nombre}</h3>
+                <h5 className="mascota-especie">
+                  <span>Especie: </span>
+                  {mascota.especie}
+                </h5>
                 <h5 className="mascota-raza">
                   <span>Raza: </span>
                   {mascota.raza}
