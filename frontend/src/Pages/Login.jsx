@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { getDatos } from "../utils/apiHandler";
 import { urlAdmin, urlUsuario } from "../utils/urls";
 
-const Login = () => {
+const Login = ({setAutenticado}) => {
 	const navigate = useNavigate();
 
 	const [correo, setCorreo] = useState("");
@@ -38,19 +38,19 @@ const Login = () => {
 					(admin) => admin.correo === correo && admin.clave === clave
 				),
 			};
-			/**En app
-       * useEffect(() => {
-        const isAuthenticated = localStorage.getItem("isAuthenticated");
-        if (isAuthenticated !== "true") {
-            navigate("/login"); // Redirigir al login si no está autenticado
-        }
-    }, [navigate]);
-       */
-			//Pendiente vistas admin y usuario agregar localStorage.setItem("isAuthenticated", "true");
-			if (registro.adoptante) navigate("/mascotas");
-			if (registro.administrador) navigate("/nosotros");
+
+			if (registro.adoptante) {
+				localStorage.setItem("autenticado","true");
+				setAutenticado(true);
+				navigate("/mascotas");
+			};
+			if (registro.administrador) {
+				localStorage.setItem("autenticado","true");
+				setAutenticado(true);
+				navigate("/nosotros");
+			}
 		},
-		[usuario, administrador, navigate]
+		[usuario, administrador, navigate, setAutenticado]
 	);
 
 	const handleSubmit = (event) => {
