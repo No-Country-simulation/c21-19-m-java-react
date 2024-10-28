@@ -13,14 +13,13 @@ const Registro = () => {
   const [isOpen, openModal, closeModal] = useModal(false);
 
   const handleSubmit = async (event) => {
-    
     event.preventDefault();
 
     const data = {
       dni,
       nombre,
       correo,
-      clave
+      clave,
     };
 
     try {
@@ -31,7 +30,6 @@ const Registro = () => {
       setNombre("");
       setCorreo("");
       setClave("");
-
     } catch (error) {
       console.error("Error al enviar datos", error);
     }
@@ -63,7 +61,7 @@ const Registro = () => {
               className="form-control"
               type="number"
               id="dni"
-              value={dni?dni:""}
+              value={dni ? dni : ""}
             />
           </div>
           <div className="mb-3">
@@ -90,10 +88,6 @@ const Registro = () => {
               value={clave}
             />
           </div>
-          <input
-            className="btn btn-lg btn-success"
-            type="submit"
-          />
         </form>
       </div>
       <Modal isOpen={isOpen} closeModal={closeModal}>
