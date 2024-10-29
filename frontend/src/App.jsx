@@ -13,6 +13,7 @@ import Registro from "./Pages/Registro.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import Administrador from "./components/Administrador/Administrador.jsx";
 
 const App = () => {
 	
@@ -47,6 +48,7 @@ const App = () => {
 			<Route path="/gracias" element={<Gracias />} />
 		  </Route>
 		  <Route path="/registro" element={<Registro />} />
+		  <Route path="/admin" element={<Administrador />} />
 		</Routes>
 		<Footer />
 	  </BrowserRouter>
