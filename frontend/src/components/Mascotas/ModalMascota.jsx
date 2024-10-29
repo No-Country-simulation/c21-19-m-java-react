@@ -5,6 +5,7 @@ import Modal from "react-bootstrap/Modal";
 function ModalMascota({ mascota, onClose }) {
   return (
     <Modal
+      className="mascota-modal"
       show
       onHide={onClose}
       size="sm"
@@ -16,12 +17,15 @@ function ModalMascota({ mascota, onClose }) {
           {mascota?.nombre || "Información de la Mascota"}
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body>
-        <img
-          src={mascota?.imagen}
-          alt={`Foto de ${mascota?.nombre}`}
-          style={{ width: "50%", maxHeight: "auto", borderRadius: "8px" }}
-        />
+      <Modal.Body className="py-0">
+        <div className="modal-body-img">
+          <img
+            className="modal-img"
+            src={mascota?.imagen}
+            alt={`Foto de ${mascota?.nombre}`}
+            /*   style={{ width: "50%", maxHeight: "auto", borderRadius: "8px" }} */
+          />
+        </div>
         <h6 className="mt-2 fw-bold">
           Raza: <span className="fw-light">{mascota?.raza}</span>
         </h6>
@@ -37,10 +41,8 @@ function ModalMascota({ mascota, onClose }) {
             {mascota?.descripcion || "Sin descripción disponible"}
           </span>
         </p>
+        <Button className="btn btn-lg btn-success mb-5">Adoptar</Button>
       </Modal.Body>
-      <Modal.Footer>
-        <Button variant="primary">Adoptar</Button>
-      </Modal.Footer>
     </Modal>
   );
 }

@@ -88,6 +88,9 @@ const Registro = () => {
               value={clave}
             />
           </div>
+          <a className="btn btn-lg btn-success mb-5" href="/mascotas">
+            <b>Enviar</b>
+          </a>
         </form>
       </div>
       <Modal isOpen={isOpen} closeModal={closeModal}>
