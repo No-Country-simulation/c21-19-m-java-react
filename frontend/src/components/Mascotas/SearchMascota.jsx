@@ -46,7 +46,7 @@ const SearchMascota = () => {
   };
 
   return (
-    <div className="my-4">
+    <div className="my-4 index-mascotas">
       <form className="mb-4">
         <span>Filtra las mascotas por especie: </span>
         <select onChange={handleChange}>

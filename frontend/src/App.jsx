@@ -11,46 +11,46 @@ import Gracias from "./Pages/Gracias.jsx";
 import Login from "./Pages/Login.jsx";
 import Registro from "./Pages/Registro.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
-
 import "bootstrap/dist/css/bootstrap.min.css";
+import MascotasForm from "./Pages/MascotasForm.jsx";
 
 const App = () => {
-	
-	const [usuario, setUsuario] = useState(null);
-  
-	const login = (perfil, correo, clave, datos) => {
-	  const info = { perfil, correo, clave, datos };
-	  setUsuario(info);
-	  localStorage.setItem("usuario", JSON.stringify(info));
-	};
-  
-	const logout = () => {
-	  setUsuario(null);
-	  localStorage.removeItem("usuario");
-	};
-  
-	useEffect(() => {
-	  const registro = localStorage.getItem("usuario");
-	  if (registro) setUsuario(JSON.parse(registro));
-	}, []);
-  
-	return (
-	  <BrowserRouter>
-		<BarraNav ingreso={usuario} salida={logout} />
-		<Routes>
-		  <Route path="/" element={<Login ingreso={login} />} />
-		  <Route element={<ProtectedRoute ingreso={usuario} />}>
-			<Route path="/inicio" element={<Inicio />} />
-			<Route path="/mascotas" element={<Mascotas />} />
-			<Route path="/nosotros" element={<Nosotros />} />
-			<Route path="/contacto" element={<Contacto />} />
-			<Route path="/gracias" element={<Gracias />} />
-		  </Route>
-		  <Route path="/registro" element={<Registro />} />
-		</Routes>
-		<Footer />
-	  </BrowserRouter>
-	);
+  const [usuario, setUsuario] = useState(null);
+
+  const login = (perfil, correo, clave, datos) => {
+    const info = { perfil, correo, clave, datos };
+    setUsuario(info);
+    localStorage.setItem("usuario", JSON.stringify(info));
   };
-  
-  export default App;
+
+  const logout = () => {
+    setUsuario(null);
+    localStorage.removeItem("usuario");
+  };
+
+  useEffect(() => {
+    const registro = localStorage.getItem("usuario");
+    if (registro) setUsuario(JSON.parse(registro));
+  }, []);
+
+  return (
+    <BrowserRouter>
+      <BarraNav ingreso={usuario} salida={logout} />
+      <Routes>
+        <Route path="/" element={<Login ingreso={login} />} />
+        <Route element={<ProtectedRoute ingreso={usuario} />}>
+          <Route path="/inicio" element={<Inicio />} />
+          <Route path="/mascotas" element={<Mascotas />} />
+          <Route path="/nosotros" element={<Nosotros />} />
+          <Route path="/contacto" element={<Contacto />} />
+          <Route path="/gracias" element={<Gracias />} />
+          <Route path="/mascotasform" element={<MascotasForm />} />
+        </Route>
+        <Route path="/registro" element={<Registro />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
+  );
+};
+
+export default App;

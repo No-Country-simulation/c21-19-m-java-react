@@ -1,11 +1,18 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import { useNavigate } from "react-router-dom";
 
 function ModalMascota({ mascota, onClose }) {
+  const navigate = useNavigate();
+
+  const handleAdoptarClick = () => {
+    navigate("/mascotasform", { state: { mascota } });
+  };
+
   return (
     <Modal
-      className="mascota-modal"
+      className="index-modal"
       show
       onHide={onClose}
       size="sm"
@@ -23,7 +30,6 @@ function ModalMascota({ mascota, onClose }) {
             className="modal-img"
             src={mascota?.imagen}
             alt={`Foto de ${mascota?.nombre}`}
-            /*   style={{ width: "50%", maxHeight: "auto", borderRadius: "8px" }} */
           />
         </div>
         <h6 className="mt-2 fw-bold">
@@ -41,7 +47,12 @@ function ModalMascota({ mascota, onClose }) {
             {mascota?.descripcion || "Sin descripción disponible"}
           </span>
         </p>
-        <Button className="btn btn-lg btn-success mb-5">Adoptar</Button>
+        <Button
+          className="btn btn-lg btn-success mb-5"
+          onClick={handleAdoptarClick}
+        >
+          Adoptar
+        </Button>
       </Modal.Body>
     </Modal>
   );

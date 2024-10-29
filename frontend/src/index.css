@@ -141,11 +141,23 @@ body {
   color: var(--third-color);
 }
 
+.mascota-modal {
+  z-index: 1055;
+}
+
 .modal-body-img {
   width: 100%;
   aspect-ratio: 1.5;
   position: relative;
   overflow: hidden;
+}
+
+.index-mascotas {
+  z-index: 999;
+}
+
+.index-modal {
+  z-index: 1000;
 }
 
 .modal-img {
