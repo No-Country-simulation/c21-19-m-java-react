@@ -1,8 +1,10 @@
 import { useState } from "react";
-import Modal from "../components/Modal";
+/* import Modal from "../components/Modal"; */
 import { useModal } from "../hooks/useModal";
 import { postDatos } from "../utils/apiHandler";
 import { urlUsuario } from "../utils/urls";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 const Registro = () => {
   const [dni, setDni] = useState(0);
@@ -10,7 +12,11 @@ const Registro = () => {
   const [correo, setCorreo] = useState("");
   const [clave, setClave] = useState("");
 
-  const [isOpen, openModal, closeModal] = useModal(false);
+  /*  const [isOpen, openModal, closeModal] = useModal(false); */
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -25,7 +31,7 @@ const Registro = () => {
     try {
       await postDatos(urlUsuario, data);
       openModal();
-      
+
       setDni(0);
       setNombre("");
       setCorreo("");
@@ -88,14 +94,33 @@ const Registro = () => {
               value={clave}
             />
           </div>
-          <button className="btn btn-lg btn-success mb-5" href="/mascotas">
+          <button
+            className="btn btn-lg btn-success mb-5"
+            href="/mascotas"
+            onClick={handleShow}
+          >
             <b>Enviar</b>
           </button>
         </form>
       </div>
-      <Modal isOpen={isOpen} closeModal={closeModal}>
+      {/*     <Modal isOpen={isOpen} closeModal={closeModal}>
         <h3>Modal 1</h3>
         <p>Hola Modal 1</p>
+      </Modal> */}
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Registro</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Te has registrado con éxito</Modal.Body>
+        <Modal.Footer>
+          <Button
+            className="btn btn-lg btn-success mb-5 my-0"
+            href="/"
+            onClick={handleClose}
+          >
+            Iniciar Sesión
+          </Button>
+        </Modal.Footer>
       </Modal>
     </div>
   );
