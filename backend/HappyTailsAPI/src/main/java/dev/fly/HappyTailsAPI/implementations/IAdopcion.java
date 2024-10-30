@@ -48,22 +48,40 @@ public class IAdopcion implements AdopcionService {
     }
 
     @Override
-    public Adopcion adopcionMascotaUsuario(AdopcionInput data) {
+    public Adopcion solicitudMascotaUsuario(AdopcionInput data) {
         Adopcion adopcion = new Adopcion();
 
         Usuario usuario = new Usuario();
         usuario.setDni(data.dniUsuario);
         Mascotas mascotas = new Mascotas();
-        mascotas.setIdMascotas(data.idMascotas);
+        mascotas.setIdMascotas(data.idMascota);
 
-        AdopcionLlaveCompuesta id = new AdopcionLlaveCompuesta(data.dniUsuario, data.idMascotas);
+        AdopcionLlaveCompuesta id = new AdopcionLlaveCompuesta(data.dniUsuario, data.idMascota);
 
         adopcion.setId(id);
+        adopcion.setSolicitud(data.solicitud);
         adopcion.setFechaAdopcion(data.fechaAdopcion);
 
         adopcion.setMascotas(mascotas);
         adopcion.setUsuario(usuario);
-        log.info("Mascotas: {} registro exitosamente a la mascota: {}", adopcion.getUsuario(), adopcion.getMascotas());
+        log.info("Usuario: {} registro exitosamente a la mascota: {}", adopcion.getUsuario(), adopcion.getMascotas());
+        return repository.save(adopcion);
+    }
+
+    @Override
+    public Adopcion adopcionMascotaUsuario(AdopcionLlaveCompuesta id, String estadoSolicitud) {
+        Adopcion adopcion = repository.findById(String.valueOf(id))
+                .orElseThrow(() -> new IllegalArgumentException("No se encontró la adopción con el id: " + id));
+
+        adopcion.setSolicitud(estadoSolicitud);
+
+        if (estadoSolicitud.equalsIgnoreCase("aceptada")) {
+            Mascotas mascota = adopcion.getMascotas();
+            mascota.setEstado(false);
+        }
+    
+        log.info("Solicitud usuario: {} de adopción a la mascota: {} fue actualizada a: {}", 
+                 adopcion.getUsuario(), adopcion.getMascotas(), adopcion.getSolicitud());
         return repository.save(adopcion);
     }
 
@@ -71,7 +89,6 @@ public class IAdopcion implements AdopcionService {
     public void eliminarAdopcion(AdopcionLlaveCompuesta id) {
         Adopcion adopcion = new Adopcion();
         adopcion.setId(id);
-
         repository.delete(adopcion);
     }
 

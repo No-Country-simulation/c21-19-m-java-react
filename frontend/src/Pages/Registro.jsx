@@ -25,7 +25,7 @@ const Registro = () => {
     try {
       await postDatos(urlUsuario, data);
       openModal();
-
+      
       setDni(0);
       setNombre("");
       setCorreo("");
@@ -88,9 +88,9 @@ const Registro = () => {
               value={clave}
             />
           </div>
-          <a className="btn btn-lg btn-success mb-5" href="/mascotas">
+          <button className="btn btn-lg btn-success mb-5" href="/mascotas">
             <b>Enviar</b>
-          </a>
+          </button>
         </form>
       </div>
       <Modal isOpen={isOpen} closeModal={closeModal}>

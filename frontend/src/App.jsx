@@ -11,7 +11,6 @@ import Gracias from "./Pages/Gracias.jsx";
 import Login from "./Pages/Login.jsx";
 import Registro from "./Pages/Registro.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 import Administrador from "./components/Administrador/Administrador.jsx";
 import AdministradoresCRUD from "./components/Administrador/CRUD/AdministradoresCRUD.jsx";
@@ -20,6 +19,8 @@ import MascotasCRUD from "./components/Administrador/CRUD/MascotasCRUD.jsx";
 import RegistrosCRUD from "./components/Administrador/CRUD/RegistrosCRUD.jsx";
 import AdopcionesCRUD from "./components/Administrador/CRUD/AdopcionesCRUD.jsx";
 import MascotasForm from "./Pages/MascotasForm.jsx";
+
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
   const [usuario, setUsuario] = useState(null);
