@@ -141,23 +141,11 @@ body {
   color: var(--third-color);
 }
 
-.mascota-modal {
-  z-index: 1055;
-}
-
 .modal-body-img {
   width: 100%;
   aspect-ratio: 1.5;
   position: relative;
   overflow: hidden;
-}
-
-.index-mascotas {
-  z-index: 999;
-}
-
-.index-modal {
-  z-index: 1000;
 }
 
 .modal-img {
@@ -199,19 +187,6 @@ body {
 .footer-img {
   width: auto;
   height: 7rem;
-}
-
-.modal {
-  position: fixed;
-  z-index: 999;
-  top: 0;
-  left: 0;
-  width: 100%;
-  min-height: 100vh;
-  background-color: rgba(0, 0, 0, 0.75);
-  display: none;
-  justify-content: center;
-  align-items: center;
 }
 
 .modal.is-open {

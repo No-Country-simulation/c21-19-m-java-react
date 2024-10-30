@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { urlMascota } from "../../utils/urls";
 import { getDatos } from "../../utils/apiHandler";
-import ModalMascota from "./ModalMascota";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import { useNavigate } from "react-router-dom";
 
 const SearchMascota = () => {
   const [mascotas, setMascotas] = useState([]);
-  const [especie, setEspecie] = useState("Todos"); // Cambia a una cadena inicial
-  const [mascotasFiltradas, setMascotasFiltradas] = useState([]);
+  const [especie, setEspecie] = useState("Todos");
   const [mostrarModal, setMostrarModal] = useState(false);
   const [mascotaSeleccionada, setMascotaSeleccionada] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const obtenerDatos = async () => {
       try {
         const datos = await getDatos(urlMascota);
         setMascotas(datos);
-        console.log(datos);
-        setMascotasFiltradas(datos); // Inicializa las mascotas filtradas con todos los datos
       } catch (error) {
         console.error("Error al obtener los datos:", error);
       }
@@ -24,15 +24,8 @@ const SearchMascota = () => {
     obtenerDatos();
   }, []);
 
-  // Filtra las mascotas según la especie seleccionada
-  const filters = mascotas.filter((dato) => {
-    if (especie === "Todos") return true;
-    return dato.especie === especie;
-  });
-
   const handleChange = (e) => {
-    e.preventDefault();
-    setEspecie(e.target.value); // Actualiza especie con el valor seleccionado
+    setEspecie(e.target.value);
   };
 
   const handleMascotaClick = (mascota) => {
@@ -45,18 +38,27 @@ const SearchMascota = () => {
     setMascotaSeleccionada(null);
   };
 
+  const handleAdoptarClick = () => {
+    setMostrarModal(false);
+    navigate("/mascotasform", { state: { mascota: mascotaSeleccionada } });
+  };
+
+  const filteredMascotas = mascotas.filter(
+    (dato) => especie === "Todos" || dato.especie === especie
+  );
+
   return (
     <div className="my-4 index-mascotas">
       <form className="mb-4">
         <span>Filtra las mascotas por especie: </span>
-        <select onChange={handleChange}>
+        <select onChange={handleChange} value={especie}>
           <option value="Todos">Todos</option>
           <option value="Perro">Perros</option>
           <option value="Gato">Gatos</option>
         </select>
       </form>
       <div className="row align-items-lg-center">
-        {filters.map((mascota, index) => (
+        {filteredMascotas.map((mascota, index) => (
           <div
             key={index}
             className="col-12 col-sm-6 col-lg-3 d-flex"
@@ -85,12 +87,53 @@ const SearchMascota = () => {
           </div>
         ))}
       </div>
-      {mostrarModal && (
-        <ModalMascota
-          mascota={mascotaSeleccionada}
-          onClose={handleCloseModal}
-        />
-      )}
+      <Modal
+        className="index-modal"
+        show={mostrarModal}
+        onHide={handleCloseModal}
+        size="sm"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+        backdrop="static"
+        keyboard={false}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>
+            {mascotaSeleccionada?.nombre || "Información de la Mascota"}
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body className="py-0">
+          <div className="modal-body-img">
+            <img
+              className="modal-img"
+              src={mascotaSeleccionada?.imagen}
+              alt={`Foto de ${mascotaSeleccionada?.nombre}`}
+            />
+          </div>
+          <h6 className="mt-2 fw-bold">
+            Raza: <span className="fw-light">{mascotaSeleccionada?.raza}</span>
+          </h6>
+          <h6 className="mt-2 fw-bold">
+            Edad: <span className="fw-light">{mascotaSeleccionada?.edad}</span>
+          </h6>
+          <h6 className="mt-2 fw-bold">
+            Tamaño:{" "}
+            <span className="fw-light">{mascotaSeleccionada?.medida}</span>
+          </h6>
+          <p className="mt-2 fw-bold">
+            Descripción:{" "}
+            <span className="fw-light">
+              {mascotaSeleccionada?.descripcion || "Sin descripción disponible"}
+            </span>
+          </p>
+          <Button
+            className="btn btn-lg btn-success mb-5"
+            onClick={handleAdoptarClick}
+          >
+            Adoptar
+          </Button>
+        </Modal.Body>
+      </Modal>
     </div>
   );
 };

@@ -44,7 +44,10 @@ const App = () => {
           <Route path="/nosotros" element={<Nosotros />} />
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/gracias" element={<Gracias />} />
-          <Route path="/mascotasform" element={<MascotasForm />} />
+          <Route
+            path="/mascotasform"
+            element={<MascotasForm usuario={usuario} />}
+          />
         </Route>
         <Route path="/registro" element={<Registro />} />
       </Routes>

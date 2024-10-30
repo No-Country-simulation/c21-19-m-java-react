@@ -1,8 +1,17 @@
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
-const MascotasForm = () => {
+const MascotasForm = ({ usuario }) => {
+  const [adoptante, setAdoptante] = useState(null);
+
+  useEffect(() => {
+    setAdoptante(usuario);
+  }, [usuario]);
+
   const location = useLocation();
   const mascota = location.state?.mascota;
+
+  console.log(JSON.parse(localStorage.getItem("usuario")));
 
   return (
     <div className="container">
@@ -13,13 +22,10 @@ const MascotasForm = () => {
             : "Formulario de Adopción"}
         </h3>
 
-        <form
-          action="https://formsubmit.co/marcelyepesqf@gmail.com"
-          method="POST"
-        >
+        {/*   <form>
           <div className="mb-3">
             <label className="form-label" htmlFor="name">
-              Nombre:
+              Nombre: {adoptante && adoptante.datos.nombre}
             </label>
             <input
               className="form-control"
@@ -43,33 +49,7 @@ const MascotasForm = () => {
               required
             />
           </div>
-          <div className="mb-3">
-            <label className="form-label" htmlFor="comments">
-              Comentarios:
-            </label>
-            <textarea
-              cols="5"
-              className="form-control"
-              id="comments"
-              name="comments"
-              placeholder="Déjanos tus comentarios"
-              required
-            ></textarea>
-          </div>
-          <div className="mb-3">
-            <input className="btn btn-lg btn-success" type="submit" />
-            <input
-              type="hidden"
-              name="_next"
-              value="http://localhost:5173/gracias"
-            />
-            <input
-              type="hidden"
-              name="_subject"
-              value="Comentario de Colitas Felices"
-            />
-          </div>
-        </form>
+        </form> */}
       </article>
     </div>
   );
