@@ -5,7 +5,7 @@ import youtube from "../icons/youtube.svg";
 
 export function Footer() {
   return (
-    <section className="container text-center mt-5">
+    <section className="text-center mt-5">
       <div className="footer bg-second-alpha-color p-3">
         <img
           className="footer-img"

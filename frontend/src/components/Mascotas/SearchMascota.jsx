@@ -1,33 +1,139 @@
-import React, { useRef } from "react";
+import React, { useEffect, useState } from "react";
+import { urlMascota } from "../../utils/urls";
+import { getDatos } from "../../utils/apiHandler";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import { useNavigate } from "react-router-dom";
 
 const SearchMascota = () => {
-  /* const inputMascota = useRef();
+  const [mascotas, setMascotas] = useState([]);
+  const [especie, setEspecie] = useState("Todos");
+  const [mostrarModal, setMostrarModal] = useState(false);
+  const [mascotaSeleccionada, setMascotaSeleccionada] = useState(null);
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(inputMascota.current.value);
-  }; */
+  useEffect(() => {
+    const obtenerDatos = async () => {
+      try {
+        const datos = await getDatos(urlMascota);
+        setMascotas(datos);
+      } catch (error) {
+        console.error("Error al obtener los datos:", error);
+      }
+    };
+    obtenerDatos();
+  }, []);
 
   const handleChange = (e) => {
-    console.log(e.target.value);
+    setEspecie(e.target.value);
   };
 
+  const handleMascotaClick = (mascota) => {
+    setMascotaSeleccionada(mascota);
+    setMostrarModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setMostrarModal(false);
+    setMascotaSeleccionada(null);
+  };
+
+  const handleAdoptarClick = () => {
+    setMostrarModal(false);
+    navigate("/mascotasform", { state: { mascota: mascotaSeleccionada } });
+  };
+
+  const filteredMascotas = mascotas.filter(
+    (dato) => especie === "Todos" || dato.especie === especie
+  );
+
   return (
-    <div className="my-4">
-      <form /* onSubmit={handleSubmit} */>
-        {/*  <input
-          ref={inputMascota}
-          type="text"
-          placeholder="Busca una mascota..."
-        />
-        <button className="mx-4 btn btn-success">Buscar</button> */}
-        <span>Filtra las mascotas por categoría: </span>
-        <select onChange={handleChange}>
-          <option value="Categoria">Todos</option>
-          <option value="Perros">Perros</option>
-          <option value="Gatos">Gatos</option>
+    <div className="my-4 index-mascotas">
+      <form className="mb-4">
+        <span>Filtra las mascotas por especie: </span>
+        <select onChange={handleChange} value={especie}>
+          <option value="Todos">Todos</option>
+          <option value="Perro">Perros</option>
+          <option value="Gato">Gatos</option>
         </select>
       </form>
+      <div className="row align-items-lg-center">
+        {filteredMascotas.map((mascota, index) => (
+          <div
+            key={index}
+            className="col-12 col-sm-6 col-lg-3 d-flex"
+            onClick={() => handleMascotaClick(mascota)}
+          >
+            <article className="card-mascota mx-auto mb-3 d-flex flex-column">
+              <header className="mascota-header">
+                <img
+                  className="mascota-img"
+                  src={mascota.imagen}
+                  alt="foto de animal"
+                />
+              </header>
+              <div className="mascota-body">
+                <h3 className="mascota-title">{mascota.nombre}</h3>
+                <h5 className="mascota-especie">
+                  <span>Especie: </span>
+                  {mascota.especie}
+                </h5>
+                <h5 className="mascota-raza">
+                  <span>Raza: </span>
+                  {mascota.raza}
+                </h5>
+              </div>
+            </article>
+          </div>
+        ))}
+      </div>
+      <Modal
+        className="index-modal"
+        show={mostrarModal}
+        onHide={handleCloseModal}
+        size="sm"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+        backdrop="static"
+        keyboard={false}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>
+            {mascotaSeleccionada?.nombre || "Información de la Mascota"}
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body className="py-0">
+          <div className="modal-body-img">
+            <img
+              className="modal-img"
+              src={mascotaSeleccionada?.imagen}
+              alt={`Foto de ${mascotaSeleccionada?.nombre}`}
+            />
+          </div>
+          <h6 className="mt-2 fw-bold">
+            Raza: <span className="fw-light">{mascotaSeleccionada?.raza}</span>
+          </h6>
+          <h6 className="mt-2 fw-bold">
+            Edad: <span className="fw-light">{mascotaSeleccionada?.edad}</span>
+          </h6>
+          <h6 className="mt-2 fw-bold">
+            Tamaño:{" "}
+            <span className="fw-light">{mascotaSeleccionada?.medida}</span>
+          </h6>
+          <p className="mt-2 fw-bold">
+            Descripción:{" "}
+            <span className="fw-light">
+              {mascotaSeleccionada?.descripcion || "Sin descripción disponible"}
+            </span>
+          </p>
+          <Button
+            className="btn btn-lg btn-success mb-5"
+            onClick={handleAdoptarClick}
+          >
+            Adoptar
+          </Button>
+        </Modal.Body>
+      </Modal>
     </div>
   );
 };

@@ -30,7 +30,13 @@ public class AdopcionControllers {
     
     @PostMapping("/adopcion")
     public Adopcion añadirAdopcion(@RequestBody AdopcionInput adopcion){
-        return services.adopcionMascotaUsuario(adopcion);
+        return services.solicitudMascotaUsuario(adopcion);
+    }
+
+    @PutMapping("/adopcion/{dniUsuario}/{mascotasId}/{solicitud}")
+    public Adopcion solicitudAdopcion(@PathVariable Integer dniUsuario, @PathVariable Integer mascotasId, @PathVariable String solicitud){
+        AdopcionLlaveCompuesta id = new AdopcionLlaveCompuesta(dniUsuario, mascotasId);
+        return services.adopcionMascotaUsuario(id, solicitud);
     }
     
     @DeleteMapping("/adopcion/{dniUsuario}/{mascotasId}")
