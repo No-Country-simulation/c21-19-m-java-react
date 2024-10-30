@@ -4,17 +4,17 @@ import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
-const MascotasForm = ({ usuario }) => {
-  const [adoptante, setAdoptante] = useState(null);
+const MascotasForm = ({ adoptante }) => {
+  const [usuario, setUsuario] = useState(null);
 
   useEffect(() => {
-    setAdoptante(usuario);
-  }, [usuario]);
+    setUsuario(adoptante);
+  }, [adoptante]);
 
   const location = useLocation();
   const mascota = location.state?.mascota;
 
-  console.log(JSON.parse(localStorage.getItem("usuario")));
+  const nombre = usuario?.datos?.nombre || 'usuario';
 
   return (
     <div className="container">
@@ -33,9 +33,8 @@ const MascotasForm = ({ usuario }) => {
           <article className="col-12 col-lg-6">
             <div className="adoption-body">
               <p>
-                Hola {usuario.datos.nombre} tu solicitud para la adopción de{" "}
-                {mascota.nombre} está en proceso de revisión. Pronto nos
-                comunicaremos contigo.
+                {`Hola ${nombre} tu solicitud para la adopción de ${mascota.nombre} 
+                está en proceso de revisión. Pronto nos comunicaremos contigo.`}
               </p>
               <a
                 className="btn btn-md btn-success mb-3 adoption-btn"

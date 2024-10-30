@@ -48,13 +48,13 @@ const App = () => {
         <Route path="/" element={<Login ingreso={login} />} />
         <Route element={<ProtectedRoute ingreso={usuario} />}>
           <Route path="/inicio" element={<Inicio />} />
-          <Route path="/mascotas" element={<Mascotas />} />
+          <Route path="/mascotas" element={<Mascotas adoptante={usuario}/>} />
           <Route path="/nosotros" element={<Nosotros />} />
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/gracias" element={<Gracias />} />
           <Route
             path="/mascotasform"
-            element={<MascotasForm usuario={usuario} />}
+            element={<MascotasForm adoptante={usuario} />}
           />
         </Route>
         <Route path="/registro" element={<Registro />} />
