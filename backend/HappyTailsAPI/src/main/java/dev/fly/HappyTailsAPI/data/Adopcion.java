@@ -19,9 +19,12 @@ public class Adopcion {
     @EmbeddedId
     private AdopcionLlaveCompuesta id;
 
-    @Column(nullable = false)
+    @Column(length = 15, nullable = false)
+    private String solicitud;
+
+    @Column(length = 255, nullable = false)
     private String fechaAdopcion;
-    
+
     @ManyToOne
     @MapsId("dniUsuario")
     @JoinColumn(name = "dni_usuario", nullable = true)

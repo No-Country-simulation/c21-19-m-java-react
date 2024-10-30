@@ -10,6 +10,7 @@ import java.util.Map;
 public interface AdopcionService {
     public List<Map<String, Object>> adopcion();
     public List<Map<String, Object>> adopcionPorEstado(String estado);
-    public Adopcion adopcionMascotaUsuario(AdopcionInput data);
+    public Adopcion solicitudMascotaUsuario(AdopcionInput data);
+    public Adopcion adopcionMascotaUsuario(AdopcionLlaveCompuesta id, String estadoSolicitud);
     public void eliminarAdopcion(AdopcionLlaveCompuesta id);
 }
