@@ -104,7 +104,7 @@ const UsuariosCRUD = () => {
             <div>
                 <form>
                     <label>DNI 
-                        <input type="text" value={dni} onChange={(e) => setDni(e.target.value)}/>
+                        <input type="text" value={dni} onChange={(e) => setDni(e.target.value)} disabled/>
                     </label>
                     <label>Nombre
                         <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)}/>

@@ -106,7 +106,7 @@ const MascotasCRUD = () => {
 				especie,
 				raza,
 				imagen,
-				estado,
+				estado
 			});
 
 			const actualizacion = await getDatos(urlMascota);
@@ -191,140 +191,49 @@ const MascotasCRUD = () => {
 				</tbody>
 			</table>
 
-			{/* Formulario agregar mascota*/}
-			<div>
-				<h2>Formulario de Agregar Mascota</h2>
-				<form>
-					<label>
-						Nombre
-						<input
-							type="text"
-							value={nombre}
-							onChange={(e) => setNombre(e.target.value)}
-						/>
-					</label>
-					<label>
-						Edad
-						<input
-							type="text"
-							value={edad}
-							onChange={(e) => setEdad(e.target.value)}
-						/>
-					</label>
-					<label>
-						Descripcion
-						<input
-							type="text"
-							value={descripcion}
-							onChange={(e) => setDescripcion(e.target.value)}
-						/>
-					</label>
-					<label>
-						Medida
-						<input
-							type="text"
-							value={medida}
-							onChange={(e) => setMedida(e.target.value)}
-						/>
-					</label>
-					<label>
-						Especie
-						<input
-							type="text"
-							value={especie}
-							onChange={(e) => setEspecie(e.target.value)}
-						/>
-					</label>
-					<label>
-						Raza
-						<input
-							type="text"
-							value={raza}
-							onChange={(e) => setRaza(e.target.value)}
-						/>
-					</label>
-					<div>
-						Imagen
-						<input
-							type="file"
-							accept="image/*"
-							onChange={handleImageChange}
-						/>
-						<img src={imagen} alt="" />
-					</div>
-					<button onClick={agregarMascota}>Agregar mascota</button>
-				</form>
-			</div>
-
 			{/* Formulario editar mascota*/}
 			<div>
 				<h3>Formulario de Editar Mascota</h3>
 				<form>
 					<label>
 						Nombre
-						<input
-							type="text"
-							value={nombre}
-							onChange={(e) => setNombre(e.target.value)}
+						<input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)}
 						/>
 					</label>
 					<label>
 						Edad
-						<input
-							type="text"
-							value={edad}
-							onChange={(e) => setEdad(e.target.value)}
+						<input type="text" value={edad} onChange={(e) => setEdad(e.target.value)}
 						/>
 					</label>
 					<label>
 						Descripcion
-						<input
-							type="text"
-							value={descripcion}
-							onChange={(e) => setDescripcion(e.target.value)}
+						<input type="text" value={descripcion} onChange={(e) => setDescripcion(e.target.value)}
 						/>
 					</label>
 					<label>
 						Medida
-						<input
-							type="text"
-							value={medida}
-							onChange={(e) => setMedida(e.target.value)}
+						<input type="text" value={medida} onChange={(e) => setMedida(e.target.value)}
 						/>
 					</label>
 					<label>
 						Especie
-						<input
-							type="text"
-							value={especie}
-							onChange={(e) => setEspecie(e.target.value)}
+						<input type="text" value={especie} onChange={(e) => setEspecie(e.target.value)}
 						/>
 					</label>
 					<label>
 						Raza
-						<input
-							type="text"
-							value={raza}
-							onChange={(e) => setRaza(e.target.value)}
+						<input type="text" value={raza} onChange={(e) => setRaza(e.target.value)}
 						/>
 					</label>
 					<div>
 						Imagen
-						<input
-							type="file"
-							accept="image/*"
-							onChange={handleImageChange}
+						<input type="file" accept="image/*" onChange={handleImageChange}
 						/>
 						<img src={imagen} alt="" />
 					</div>
 					<label>
 						Estado
-						<select
-							value={estado}
-							onChange={(e) =>
-								setEstado(e.target.value === "true")
-							}
-						>
+						<select value={estado} onChange={(e) => setEstado(e.target.value === "true")}>
 							<option value={true}>Activo</option>
 							<option value={false}>Adoptado</option>
 						</select>
@@ -332,6 +241,50 @@ const MascotasCRUD = () => {
 					<button onClick={actualizarMascota}>
 						Actualizar mascota
 					</button>
+				</form>
+			</div>
+
+			{/* Formulario agregar mascota*/}
+			<div>
+				<h2>Formulario de Agregar Mascota</h2>
+				<form>
+					<label>
+						Nombre
+						<input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)}
+						/>
+					</label>
+					<label>
+						Edad
+						<input type="text" value={edad} onChange={(e) => setEdad(e.target.value)}
+						/>
+					</label>
+					<label>
+						Descripcion
+						<input type="text" value={descripcion} onChange={(e) => setDescripcion(e.target.value)}
+						/>
+					</label>
+					<label>
+						Medida
+						<input type="text" value={medida} onChange={(e) => setMedida(e.target.value)}
+						/>
+					</label>
+					<label>
+						Especie
+						<input type="text" value={especie} onChange={(e) => setEspecie(e.target.value)}
+						/>
+					</label>
+					<label>
+						Raza
+						<input type="text" value={raza} onChange={(e) => setRaza(e.target.value)}
+						/>
+					</label>
+					<div>
+						Imagen
+						<input type="file" accept="image/*" onChange={handleImageChange}
+						/>
+						<img src={imagen} alt="" />
+					</div>
+					<button onClick={agregarMascota}>Agregar mascota</button>
 				</form>
 			</div>
 		</div>
