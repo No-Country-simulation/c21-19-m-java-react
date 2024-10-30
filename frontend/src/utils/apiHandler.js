@@ -21,7 +21,7 @@ export const postDatos = async (url, datos) => {
 export const putDatos = async (url, datos) => {
 	try {
 		const response = await axios.put(url, datos);
-		return response.data;
+		return response;
 	} catch (error) {
 		console.error(error);
 	}
@@ -30,7 +30,7 @@ export const putDatos = async (url, datos) => {
 export const deleteDatos = async (url) => {
 	try {
 		const response = await axios.delete(url);
-		return response.data;
+		return response;
 	} catch (error) {
 		console.error(error);
 	}
