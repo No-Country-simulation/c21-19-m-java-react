@@ -54,6 +54,7 @@ body {
   color: var(--first-color);
 }
 /* ***************My Styles*********************** */
+
 .bg-second-alpha-color {
   background-color: var(--second-alpha-color);
 }
@@ -94,12 +95,6 @@ body {
 .card-mascota:hover {
   transform: scale(1.03);
 }
-
-/* .grid-responsive {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1vw 1vh;
-} */
 
 .mascota-header {
   border-bottom: 1px solid #ccca;
@@ -230,6 +225,22 @@ small {
     width: 334px; /* Fijar el ancho de todas las tarjetas */
     height: 368px; /* Fijar la altura de todas las tarjetas */
   }
+
+  /* .mascota-form-contenido {
+    max-width: 800px;
+    flex-direction: row;
+  }
+
+  .mascota-form-contenido img {
+    max-width: 400px;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .mascota-form-info {
+    margin-left: 1rem;
+    align-self: center;
+  } */
 }
 
 /*  Large devices (desktops, 992px and up) */

@@ -7,7 +7,7 @@ const Nosotros = () => {
       <main>
         <div className="container">
           <section className="row align-items-lg-center mt-5 ">
-            <article className="col-12 col-lg-6 ">
+            <article className="col-12 col-lg-6">
               <h2>Nuestro Proyecto</h2>
               <p className="fs-5">
                 El proyecto Colitas Felices para adoptar mascotas comenzó cuando
