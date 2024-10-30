@@ -14,6 +14,8 @@ import ProtectedRoute from "./components/ProtectedRoute.jsx";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import Administrador from "./components/Administrador/Administrador.jsx";
+import MascotasCRUD from "./components/Administrador/CRUD/MascotasCRUD.jsx";
+import UsuariosCRUD from "./components/Administrador/CRUD/UsuariosCRUD.jsx";
 
 const App = () => {
 	
@@ -49,6 +51,8 @@ const App = () => {
 		  </Route>
 		  <Route path="/registro" element={<Registro />} />
 		  <Route path="/admin" element={<Administrador />} />
+		  <Route path="/gestion-mascotas" element={<MascotasCRUD />} />
+		  <Route path="/gestion-usuarios" element={<UsuariosCRUD />} />
 		</Routes>
 		<Footer />
 	  </BrowserRouter>
