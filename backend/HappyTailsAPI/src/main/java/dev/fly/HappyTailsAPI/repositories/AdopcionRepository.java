@@ -2,6 +2,7 @@ package dev.fly.HappyTailsAPI.repositories;
 
 
 import dev.fly.HappyTailsAPI.data.Adopcion;
+import dev.fly.HappyTailsAPI.utils.AdopcionLlaveCompuesta;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -9,10 +10,10 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 import java.util.Map;
 
-public interface AdopcionRepository extends JpaRepository<Adopcion, String> {
+public interface AdopcionRepository extends JpaRepository<Adopcion, AdopcionLlaveCompuesta> {
     @Query(value = "select " +
-            "usu.nombre, usu.correo, " +
-            "masc.raza , masc.nombre, masc.edad, masc.medida, masc.estado" +
+            "usu.nombre as usuario, usu.correo, " +
+            "masc.raza , masc.nombre, masc.edad, masc.medida, masc.estado, " +
             "adop.fecha_adopcion, adop.solicitud " +
             "from mascotas.adopcion adop " +
             "inner join mascotas.usuario usu on adop.dni_usuario = usu.dni " +
@@ -21,8 +22,8 @@ public interface AdopcionRepository extends JpaRepository<Adopcion, String> {
     public List<Map<String, Object>> getAdopciones();
 
     @Query(value = "select " +
-            "usu.nombre, usu.correo, " +
-            "masc.raza , masc.nombre, masc.edad, masc.medida, masc.estado " +
+            "usu.nombre as usuario, usu.correo, " +
+            "masc.raza , masc.nombre, masc.edad, masc.medida, masc.estado, " +
             "adop.fecha_adopcion, adop.solicitud " +
             "from mascotas.adopcion adop " +
             "inner join mascotas.usuario usu on adop.dni_usuario = usu.dni " +

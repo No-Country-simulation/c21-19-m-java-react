@@ -5,15 +5,22 @@ import { urlAdopcion } from "../../../utils/urls";
 const AdopcionesCRUD = () => {
 
 	const [registros, setRegistros] = useState([]);
-	const [estado, setEstado] = useState("T");
+	//const [estado, setEstado] = useState("T");
 
+	// useEffect(() => {
+	// 	const datosRegistros = async (estado) => {
+	// 		const datos = await getDatos(`${urlAdopcion}/${estado}`);
+	// 		setRegistros(datos);
+	// 	};
+	// 	datosRegistros(estado);
+	// }, [estado]);
 	useEffect(() => {
-		const datosRegistros = async (estado) => {
-			const datos = await getDatos(`${urlAdopcion}/${estado}`);
+		const datosRegistros = async () => {
+			const datos = await getDatos(urlAdopcion);
 			setRegistros(datos);
 		};
-		datosRegistros(estado);
-	}, [estado]);
+		datosRegistros();
+	}, []);
 
 	const eliminarRegistro = async (admin, mascota) => {
 		try {
@@ -60,7 +67,7 @@ const AdopcionesCRUD = () => {
 							<td>
 								{registro.estado === "T" ? "Activo": "Inactivo"}
 							</td>
-							<td>{registro.fecha_registro}</td>
+							<td>{registro.fecha_adopcion}</td>
 							<td>
 								<button onClick={() => eliminarRegistro(registro.alias, registro.id_mascotas)}>
 									Eliminar

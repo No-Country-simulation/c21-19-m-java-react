@@ -1,5 +1,6 @@
 package dev.fly.HappyTailsAPI.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.Set;
 import lombok.Data;
@@ -40,11 +41,13 @@ public class Mascotas {
     @OneToMany(mappedBy = "mascotas", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
+    @JsonIgnore
     private Set<Adopcion> adopciones;
 
 
     @OneToMany(mappedBy = "mascotas", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
+    @JsonIgnore
     private Set<Registro> registros;
 }

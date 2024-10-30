@@ -69,13 +69,13 @@ public class IAdopcion implements AdopcionService {
     }
 
     @Override
-    public Adopcion adopcionMascotaUsuario(AdopcionLlaveCompuesta id, String estadoSolicitud) {
-        Adopcion adopcion = repository.findById(String.valueOf(id))
+    public Adopcion adopcionMascotaUsuario(AdopcionLlaveCompuesta id, String estado) {
+        Adopcion adopcion = repository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("No se encontró la adopción con el id: " + id));
 
-        adopcion.setSolicitud(estadoSolicitud);
+        adopcion.setSolicitud(estado);
 
-        if (estadoSolicitud.equalsIgnoreCase("aceptada")) {
+        if (estado.equalsIgnoreCase("aceptado")) {
             Mascotas mascota = adopcion.getMascotas();
             mascota.setEstado(false);
         }

@@ -1,5 +1,6 @@
 package dev.fly.HappyTailsAPI.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.fly.HappyTailsAPI.utils.AdopcionLlaveCompuesta;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -30,6 +31,7 @@ public class Adopcion {
     @JoinColumn(name = "dni_usuario", nullable = true)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
+    @JsonIgnore
     private Usuario usuario;
     
     @ManyToOne
@@ -37,6 +39,7 @@ public class Adopcion {
     @JoinColumn(name = "mascotas_id", nullable = true)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
+    @JsonIgnore
     private Mascotas mascotas;
 
 }
