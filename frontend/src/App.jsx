@@ -12,6 +12,13 @@ import Login from "./Pages/Login.jsx";
 import Registro from "./Pages/Registro.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
+
+import Administrador from "./components/Administrador/Administrador.jsx";
+import AdministradoresCRUD from "./components/Administrador/CRUD/AdministradoresCRUD.jsx";
+import UsuariosCRUD from "./components/Administrador/CRUD/UsuariosCRUD.jsx";
+import MascotasCRUD from "./components/Administrador/CRUD/MascotasCRUD.jsx";
+import RegistrosCRUD from "./components/Administrador/CRUD/RegistrosCRUD.jsx";
+import AdopcionesCRUD from "./components/Administrador/CRUD/AdopcionesCRUD.jsx";
 import MascotasForm from "./Pages/MascotasForm.jsx";
 
 const App = () => {
@@ -50,6 +57,15 @@ const App = () => {
           />
         </Route>
         <Route path="/registro" element={<Registro />} />
+        <Route path="/admin" element={<Administrador />} />
+        <Route
+          path="/gestion-administradores"
+          element={<AdministradoresCRUD />}
+        />
+        <Route path="/gestion-usuarios" element={<UsuariosCRUD />} />
+        <Route path="/gestion-mascotas" element={<MascotasCRUD />} />
+        <Route path="/gestion-adopciones" element={<AdopcionesCRUD />} />
+        <Route path="/gestion-registros" element={<RegistrosCRUD />} />
       </Routes>
       <Footer />
     </BrowserRouter>

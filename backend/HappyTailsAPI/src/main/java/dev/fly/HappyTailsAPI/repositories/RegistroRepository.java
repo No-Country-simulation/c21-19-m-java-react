@@ -10,8 +10,8 @@ import java.util.Map;
 
 public interface RegistroRepository extends JpaRepository<Registro, String> {
     @Query(value = "select " +
-            "masc.estado, masc.edad, masc.medida, masc.nombre, " +
-            "admi.correo, " +
+            "masc.id_mascotas, masc.estado, masc.edad, masc.medida, masc.nombre, " +
+            "admi.alias, admi.correo, " +
             "regi.fecha_registro " +
             "from mascotas.mascotas masc " +
             "inner join mascotas.registro regi on masc.id_mascotas = regi.mascotas_id " +
@@ -20,8 +20,8 @@ public interface RegistroRepository extends JpaRepository<Registro, String> {
     public List<Map<String, Object>> getRegistros();
 
     @Query(value = "select " +
-            "masc.estado, masc.edad, masc.medida, masc.nombre, " +
-            "admi.correo, " +
+            "masc.id_mascotas, masc.estado, masc.edad, masc.medida, masc.nombre, " +
+            "admi.alias, admi.correo, " +
             "regi.fecha_registro " +
             "from mascotas.mascotas masc " +
             "inner join mascotas.registro regi on masc.id_mascotas = regi.mascotas_id " +
