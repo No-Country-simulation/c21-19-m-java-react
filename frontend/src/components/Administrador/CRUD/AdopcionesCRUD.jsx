@@ -27,7 +27,9 @@ const AdopcionesCRUD = () => {
 			await deleteDatos(`${urlAdopcion}/${admin}/${mascota}`);
 			setRegistros(
 				registros.filter(
-					(registro) => registro.id_mascotas !== mascota ||registro.alias !== admin
+					(registro) =>
+						registro.id_mascotas !== mascota ||
+						registro.alias !== admin
 				)
 			);
 		} catch (error) {
@@ -36,12 +38,17 @@ const AdopcionesCRUD = () => {
 	};
 
 	return (
-		<div>
-			<select onChange={(e) => setEstado(e.target.value)}>
+		<div className="vh-100">
+			{/**
+			 * <select
+				className=" m-4"
+				onChange={(e) => setEstado(e.target.value)}
+			>
 				<option value="T">Mascotas registradas y activas</option>
 				<option value="F">Mascotas registradas y adoptadas</option>
 			</select>
-			<table border="1">
+			 */}
+			<table className="grid-1 admin-table">
 				<thead>
 					<tr>
 						<th>No.</th>
@@ -65,11 +72,21 @@ const AdopcionesCRUD = () => {
 							<td>{registro.medida}</td>
 							<td>{registro.edad}</td>
 							<td>
-								{registro.estado === "T" ? "Activo": "Inactivo"}
+								{registro.estado === "T"
+									? "Activo"
+									: "Inactivo"}
 							</td>
-							<td>{registro.fecha_adopcion}</td>
+							<td>{registro.fecha_registro}</td>
 							<td>
-								<button onClick={() => eliminarRegistro(registro.alias, registro.id_mascotas)}>
+								<button
+									className="admin-btn"
+									onClick={() =>
+										eliminarRegistro(
+											registro.alias,
+											registro.id_mascotas
+										)
+									}
+								>
 									Eliminar
 								</button>
 							</td>

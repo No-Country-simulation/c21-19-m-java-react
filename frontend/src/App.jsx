@@ -21,6 +21,7 @@ import AdopcionesCRUD from "./components/Administrador/CRUD/AdopcionesCRUD.jsx";
 import MascotasForm from "./Pages/MascotasForm.jsx";
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import AdminDashboard from "./components/Administrador/AdminDashboard.jsx";
 
 const App = () => {
   const [usuario, setUsuario] = useState(null);
@@ -58,15 +59,17 @@ const App = () => {
           />
         </Route>
         <Route path="/registro" element={<Registro />} />
-        <Route path="/admin" element={<Administrador />} />
-        <Route
-          path="/gestion-administradores"
-          element={<AdministradoresCRUD />}
-        />
-        <Route path="/gestion-usuarios" element={<UsuariosCRUD />} />
-        <Route path="/gestion-mascotas" element={<MascotasCRUD />} />
-        <Route path="/gestion-adopciones" element={<AdopcionesCRUD />} />
-        <Route path="/gestion-registros" element={<RegistrosCRUD />} />
+
+        <Route path="/admin" element={<AdminDashboard />}>
+          <Route
+            path="gestion-administradores"
+            element={<AdministradoresCRUD />}
+          />
+          <Route path="gestion-usuarios" element={<UsuariosCRUD />} />
+          <Route path="gestion-mascotas" element={<MascotasCRUD />} />
+          <Route path="gestion-adopciones" element={<AdopcionesCRUD />} />
+          <Route path="gestion-registros" element={<RegistrosCRUD />} />
+        </Route>
       </Routes>
       <Footer />
     </BrowserRouter>
