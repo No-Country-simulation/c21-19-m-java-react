@@ -1,35 +1,45 @@
 import { useEffect, useState } from "react";
-import { deleteDatos, getDatos } from "../../../utils/apiHandler";
+import { deleteDatos, getDatos, putDatos } from "../../../utils/apiHandler";
 import { urlAdopcion } from "../../../utils/urls";
+import Button from "react-bootstrap/esm/Button";
 
 const AdopcionesCRUD = () => {
 
-	const [registros, setRegistros] = useState([]);
-	//const [estado, setEstado] = useState("T");
+	const [adopciones, setAdopciones] = useState([]);
 
-	// useEffect(() => {
-	// 	const datosRegistros = async (estado) => {
-	// 		const datos = await getDatos(`${urlAdopcion}/${estado}`);
-	// 		setRegistros(datos);
-	// 	};
-	// 	datosRegistros(estado);
-	// }, [estado]);
 	useEffect(() => {
-		const datosRegistros = async () => {
+		const datosAdopciones = async () => {
 			const datos = await getDatos(urlAdopcion);
-			setRegistros(datos);
+			setAdopciones(datos);
 		};
-		datosRegistros();
+		datosAdopciones();
 	}, []);
 
-	const eliminarRegistro = async (admin, mascota) => {
+	const estadoAdopciones = async (estado) => {
+		const datos = await getDatos(`${urlAdopcion}/${estado}`);
+		setAdopciones(datos);
+	};
+
+	const editarAdopcion = async(usuario, mascota, solicitud) => {
 		try {
-			await deleteDatos(`${urlAdopcion}/${admin}/${mascota}`);
-			setRegistros(
-				registros.filter(
-					(registro) =>
-						registro.id_mascotas !== mascota ||
-						registro.alias !== admin
+			await putDatos(`${urlAdopcion}/${usuario}/${mascota}/${solicitud}`,{
+				dniUsuario: usuario,
+				mascotasId:  mascota,
+				solicitud
+			})
+			const actualizacion = await getDatos(urlAdopcion);
+			setAdopciones(actualizacion);
+		} catch (error) {
+			console.error(error);
+		}
+	}
+
+	const eliminarAdopcion = async (usuario, mascota) => {
+		try {
+			await deleteDatos(`${urlAdopcion}/${usuario}/${mascota}`);
+			setAdopciones(
+				adopciones.filter(
+					(adopcion) => adopcion.id_mascotas !== mascota || adopcion.dni !== usuario
 				)
 			);
 		} catch (error) {
@@ -39,56 +49,51 @@ const AdopcionesCRUD = () => {
 
 	return (
 		<div className="vh-100">
-			{/**
-			 * <select
-				className=" m-4"
-				onChange={(e) => setEstado(e.target.value)}
-			>
-				<option value="T">Mascotas registradas y activas</option>
+			<select className=" m-4" onChange={(e) => estadoAdopciones(e.target.value)}>
+				<option value="T">Mascotas registradas y no adoptadas</option>
 				<option value="F">Mascotas registradas y adoptadas</option>
 			</select>
-			 */}
+
 			<table className="grid-1 admin-table">
 				<thead>
 					<tr>
 						<th>No.</th>
-						<th>Correo admin</th>
-						<th>Admin</th>
-						<th>Nombre mascota</th>
+						<th>Adoptante</th>
+						<th>Correo adoptante</th>
+						<th>Mascota</th>
 						<th>Medida</th>
 						<th>Edad</th>
-						<th>Estado</th>
-						<th>Fecha registro</th>
+						<th>Adopción</th>
+						<th>Solicitud</th>
+						<th>Fecha solicitud</th>
 						<th>Acciones</th>
 					</tr>
 				</thead>
 				<tbody>
-					{registros.map((registro, index) => (
+					{adopciones.map((adopcion, index) => (
 						<tr key={index}>
 							<td>{index + 1}</td>
-							<td>{registro.correo}</td>
-							<td>{registro.alias}</td>
-							<td>{registro.nombre}</td>
-							<td>{registro.medida}</td>
-							<td>{registro.edad}</td>
+							<td>{adopcion.usuario}</td>
+							<td>{adopcion.correo}</td>
+							<td>{adopcion.nombre}</td>
+							<td>{adopcion.medida}</td>
+							<td>{adopcion.edad}</td>
+							<td>{adopcion.estado === "T" ? "Disponible" : "Adoptado"}</td>
+							<td>{adopcion.solicitud}</td>
+							<td>{adopcion.fecha_adopcion}</td>
 							<td>
-								{registro.estado === "T"
-									? "Activo"
-									: "Inactivo"}
-							</td>
-							<td>{registro.fecha_registro}</td>
-							<td>
-								<button
-									className="admin-btn"
-									onClick={() =>
-										eliminarRegistro(
-											registro.alias,
-											registro.id_mascotas
-										)
-									}
-								>
+								<Button variant="info" size="sm"
+									onClick={() => editarAdopcion(adopcion.dni,adopcion.id_mascotas, "aceptado")}>
+									Aceptar
+								</Button>
+								<Button variant="warning" size="sm"
+									onClick={() => editarAdopcion(adopcion.dni,adopcion.id_mascotas, "rechazado")}>
+									Rechazar
+								</Button>
+								<Button variant="danger" size="sm"
+									onClick={() => eliminarAdopcion(adopcion.dni,adopcion.id_mascotas)}>
 									Eliminar
-								</button>
+								</Button>
 							</td>
 						</tr>
 					))}

@@ -72,33 +72,25 @@ const UsuariosCRUD = () => {
         <form className="admin-form">
           <label>
             DNI
-            <input
-              type="text"
-              value={dni}
+            <input type="number" value={dni} disabled
               onChange={(e) => setDni(e.target.value)}
-              disabled
             />
           </label>
           <label>
             Nombre
-            <input
-              type="text"
-              value={nombre}
+            <input type="text" value={nombre} required
               onChange={(e) => setNombre(e.target.value)}
             />
           </label>
           <label>
             Correo
-            <input
-              type="text"
-              value={correo}
+            <input type="email" value={correo} required
               onChange={(e) => setCorreo(e.target.value)}
             />
           </label>
           <label>
             Estado
-            <select
-              value={estado}
+            <select value={estado}
               onChange={(e) => setEstado(e.target.value === "true")}
             >
               <option value={true}>Activo</option>
@@ -129,7 +121,7 @@ const UsuariosCRUD = () => {
               <td>{usuario.dni}</td>
               <td>{usuario.nombre}</td>
               <td>{usuario.correo}</td>
-              <td>{usuario.estado}</td>
+              <td>{usuario.estado === "T" ? "Activo" : "Inactivo"}</td>
               <td>
                 <button
                   className="admin-btn"

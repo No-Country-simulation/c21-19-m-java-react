@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { urlMascota } from "../../../utils/urls";
+import { urlMascota, urlRegistro } from "../../../utils/urls";
 import {
   deleteDatos,
   getDatos,
@@ -9,9 +9,14 @@ import {
 } from "../../../utils/apiHandler";
 
 import axios from "axios";
+import dayjs from "dayjs";
+import "dayjs/locale/es";
 
-const MascotasCRUD = () => {
+const MascotasCRUD = ({registrador}) => {
+
+  dayjs.locale('es');
   const [mascotas, setMascotas] = useState([]);
+  const [registrante, setRegistrante] = useState(null);
 
   const [registro, setRegistro] = useState(0);
   const [nombre, setNombre] = useState("");
@@ -57,6 +62,11 @@ const MascotasCRUD = () => {
     }
   };
 
+  useEffect(()=> {
+    setRegistrante(registrador);
+  },[registrador]);
+
+  const admin = registrante?.datos?.alias;
   useEffect(() => {
     const datosMascotas = async () => {
       try {
@@ -72,7 +82,7 @@ const MascotasCRUD = () => {
   const agregarMascota = async (event) => {
     event.preventDefault();
     try {
-      await postDatos(urlMascota, {
+      const response = await postDatos(urlMascota, {
         nombre,
         edad,
         descripcion,
@@ -80,6 +90,15 @@ const MascotasCRUD = () => {
         especie,
         raza,
         imagen,
+      });
+
+      const idMascota = response.data.idMascotas;
+      const fechaRegistro = dayjs().format("MMMM D, YYYY HH:mm:ss A");
+      
+      await axios.post(urlRegistro, {
+        alias: admin,
+        idMascota,
+        fechaRegistro,
       });
 
       const agregacion = await getDatos(urlMascota);
@@ -149,67 +168,51 @@ const MascotasCRUD = () => {
           <form className="admin-form">
             <label>
               Nombre
-              <input
-                type="text"
-                value={nombre}
+              <input type="text" value={nombre}
                 onChange={(e) => setNombre(e.target.value)}
               />
             </label>
             <label>
               Edad
-              <input
-                type="text"
-                value={edad}
+              <input type="text" value={edad}
                 onChange={(e) => setEdad(e.target.value)}
               />
             </label>
             <label>
               Descripcion
-              <input
-                type="text"
-                value={descripcion}
+              <input type="text" value={descripcion}
                 onChange={(e) => setDescripcion(e.target.value)}
               />
             </label>
             <label>
               Medida
-              <input
-                type="text"
-                value={medida}
+              <input type="text" value={medida}
                 onChange={(e) => setMedida(e.target.value)}
               />
             </label>
             <label>
               Especie
-              <input
-                type="text"
-                value={especie}
+              <input type="text" value={especie}
                 onChange={(e) => setEspecie(e.target.value)}
               />
             </label>
             <label>
               Raza
-              <input
-                type="text"
-                value={raza}
+              <input type="text" value={raza}
                 onChange={(e) => setRaza(e.target.value)}
               />
             </label>
             <div>
               Imagen
-              <input
-                type="file"
+              <input type="file"
                 accept="image/*"
                 onChange={handleImageChange}
               />
-              <img src={imagen} alt="" />
+              <img src={imagen} alt=""/>
             </div>
             <label>
               Estado
-              <select
-                value={estado}
-                onChange={(e) => setEstado(e.target.value === "true")}
-              >
+              <select value={estado} onChange={(e) => setEstado(e.target.value === "true")}>
                 <option value={true}>Activo</option>
                 <option value={false}>Adoptado</option>
               </select>
@@ -225,60 +228,47 @@ const MascotasCRUD = () => {
           <form className="admin-form">
             <label>
               Nombre
-              <input
-                type="text"
-                value={nombre}
+              <input type="text" value={nombre}
                 onChange={(e) => setNombre(e.target.value)}
               />
             </label>
             <label>
               Edad
-              <input
-                type="text"
-                value={edad}
+              <input type="text" value={edad}
                 onChange={(e) => setEdad(e.target.value)}
               />
             </label>
             <label>
               Descripcion
-              <input
-                type="text"
-                value={descripcion}
+              <input type="text" value={descripcion}
                 onChange={(e) => setDescripcion(e.target.value)}
               />
             </label>
             <label>
               Medida
-              <input
-                type="text"
-                value={medida}
+              <input type="text" value={medida}
                 onChange={(e) => setMedida(e.target.value)}
               />
             </label>
             <label>
               Especie
-              <input
-                type="text"
-                value={especie}
+              <input type="text" value={especie}
                 onChange={(e) => setEspecie(e.target.value)}
               />
             </label>
             <label>
               Raza
-              <input
-                type="text"
-                value={raza}
+              <input type="text" value={raza}
                 onChange={(e) => setRaza(e.target.value)}
               />
             </label>
             <div>
               Imagen
-              <input
-                type="file"
-                accept="image/*"
+              <input type="file"
+                accept="image/*" 
                 onChange={handleImageChange}
               />
-              <img src={imagen} alt="" />
+              <img src={imagen} alt=""/>
             </div>
             <button className="admin-btn" onClick={agregarMascota}>
               Agregar mascota
@@ -314,7 +304,7 @@ const MascotasCRUD = () => {
                 <td>{mascota.especie}</td>
                 <td>{mascota.raza}</td>
                 <td>{mascota.imagen}</td>
-                <td>{mascota.estado}</td>
+                <td>{mascota.estado === "T" ? "Disponible" : "Adoptado"}</td>
                 <td>
                   <button
                     className="admin-btn"

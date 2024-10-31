@@ -104,27 +104,20 @@ const AdministradoresCRUD = () => {
           <form className="admin-form">
             <label>
               Alias
-              <input
-                type="text"
-                value={alias}
+              <input type="text" value={alias} disabled
                 onChange={(e) => setAlias(e.target.value)}
-                disabled
               />
             </label>
             <label>
               Correo
-              <input
-                type="text"
-                value={correo}
+              <input type="text" value={correo} required
                 onChange={(e) => setCorreo(e.target.value)}
                 disabled
               />
             </label>
             <label>
               Nombre
-              <input
-                type="text"
-                value={nombre}
+              <input type="text" value={nombre} required
                 onChange={(e) => setNombre(e.target.value)}
               />
             </label>
@@ -150,33 +143,25 @@ const AdministradoresCRUD = () => {
           <form className="admin-form">
             <label>
               Alias
-              <input
-                type="text"
-                value={alias}
+              <input type="text" value={alias} required
                 onChange={(e) => setAlias(e.target.value)}
               />
             </label>
             <label>
               Correo
-              <input
-                type="text"
-                value={correo}
+              <input type="email" value={correo} required
                 onChange={(e) => setCorreo(e.target.value)}
               />
             </label>
             <label>
               Nombre
-              <input
-                type="text"
-                value={nombre}
+              <input type="text" value={nombre} required
                 onChange={(e) => setNombre(e.target.value)}
               />
             </label>
             <label>
               Contraseña
-              <input
-                type="text"
-                value={clave}
+              <input type="password" value={clave} required
                 onChange={(e) => setClave(e.target.value)}
               />
             </label>
@@ -215,7 +200,7 @@ const AdministradoresCRUD = () => {
                 <td>{admin.alias}</td>
                 <td>{admin.correo}</td>
                 <td>{admin.nombre}</td>
-                <td>{admin.estado}</td>
+                <td>{admin.estado === "T" ? "Activo" : "Inactivo"}</td>
                 <td>{admin.clave}</td>
                 <td>
                   <button

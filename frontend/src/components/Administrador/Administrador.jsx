@@ -16,7 +16,7 @@ const Administrador = () => {
         Adopciones
       </Link>
       <Link className="admin-nav-item" to={"/admin/gestion-registros"}>
-        Registros
+        Registro mascotas
       </Link>
     </div>
   );

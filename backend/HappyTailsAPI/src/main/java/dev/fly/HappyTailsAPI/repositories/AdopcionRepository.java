@@ -12,8 +12,8 @@ import java.util.Map;
 
 public interface AdopcionRepository extends JpaRepository<Adopcion, AdopcionLlaveCompuesta> {
     @Query(value = "select " +
-            "usu.nombre as usuario, usu.correo, " +
-            "masc.raza , masc.nombre, masc.edad, masc.medida, masc.estado, " +
+            "usu.dni, usu.nombre as usuario, usu.correo, " +
+            "masc.id_mascotas, masc.raza, masc.nombre, masc.edad, masc.medida, masc.estado, " +
             "adop.fecha_adopcion, adop.solicitud " +
             "from mascotas.adopcion adop " +
             "inner join mascotas.usuario usu on adop.dni_usuario = usu.dni " +
@@ -22,8 +22,8 @@ public interface AdopcionRepository extends JpaRepository<Adopcion, AdopcionLlav
     public List<Map<String, Object>> getAdopciones();
 
     @Query(value = "select " +
-            "usu.nombre as usuario, usu.correo, " +
-            "masc.raza , masc.nombre, masc.edad, masc.medida, masc.estado, " +
+            "usu.dni, usu.nombre as usuario, usu.correo, " +
+            "masc.id_mascotas, masc.raza , masc.nombre, masc.edad, masc.medida, masc.estado, " +
             "adop.fecha_adopcion, adop.solicitud " +
             "from mascotas.adopcion adop " +
             "inner join mascotas.usuario usu on adop.dni_usuario = usu.dni " +

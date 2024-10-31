@@ -45,7 +45,7 @@ const Login = ({ingreso}) => {
 			}
 			else if(registro.administrador){
 				ingreso("administrador",correo, clave,  registro.administrador);
-				navigate("/inicio");
+				navigate("/admin");
 			}
 			else{
 				alert("Credenciales incorrectas");
@@ -92,7 +92,7 @@ const Login = ({ingreso}) => {
 							required
 						/>
 					</div>
-					<input className="btn btn-lg btn-success" type="submit" />
+					<button className="btn btn-lg btn-success">Ingresar</button>
 					<br />
 					<p className="mt-3">
 						¿No estás registrado? <a href="/registro">Registrate</a>
