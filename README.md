@@ -5,7 +5,13 @@ Colitas Felices es una plataforma web que conecta a personas interesadas en adop
 ## Rubro: Industria de Cuidado de Mascotas
 
 ## Colaboradores:
-Lola Navarro Abraham: QA Linkedin: https://www.linkedin.com/in/lola-navarro-abraham-02b19b32b/
-Daniel Alejandro Romero: Full Stack Developer Linkedin: https://www.linkedin.com/in/alejandro-romero-castellanos
-Tobias Dubini Vargas: Backend Developer Linkedin: https://www.linkedin.com/in/tobías-dubini/?trk=opento_sprofile_topcard
-Marcel Yepes Alvarez: Frontend Developer Linkedin: linkedin.com/in/marcel-yepes-50a8601b0
+- Lola Navarro Abraham: <a href="https://www.linkedin.com/in/lola-navarro-abraham-02b19b32b/">QA Linkedin</a>
+- Daniel Alejandro Romero: <a href="https://www.linkedin.com/in/alejandro-romero-castellanos">Full Stack Developer</a>
+- Tobias Dubini Vargas: <a href="https://www.linkedin.com/in/tobías-dubini/?trk=opento_sprofile_topcard">Backend Developer</a>
+- Marcel Yepes Alvarez: <a href="linkedin.com/in/marcel-yepes-50a8601b0">Frontend Developer</a>
+
+<details>
+  <summary>Haz clic para ver los enlaces de nuestra app</summary>
+  - <a href="https://happytailsapi-crimson-sky-5353.fly.dev">API - Backend</a>
+  - <a href="https://colitas-felices-aa01a.web.app/">Frontend</a>
+</details>
