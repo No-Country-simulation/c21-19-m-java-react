@@ -15,7 +15,7 @@ public class HappyTailsApiApplication implements WebMvcConfigurer {
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
 		registry.addMapping("/**")
-				.allowedOrigins("*")
+				.allowedOrigins("https://colitas-felices-aa01a.web.app/")
 				.allowedMethods("*")
 				.allowedHeaders("*");
 	}
