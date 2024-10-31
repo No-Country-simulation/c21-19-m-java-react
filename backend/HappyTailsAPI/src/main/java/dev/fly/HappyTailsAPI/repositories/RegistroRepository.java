@@ -13,9 +13,9 @@ public interface RegistroRepository extends JpaRepository<Registro, String> {
             "masc.id_mascotas, masc.estado, masc.edad, masc.medida, masc.nombre, " +
             "admi.alias, admi.correo, " +
             "regi.fecha_registro " +
-            "from mascotas.mascotas masc " +
-            "inner join mascotas.registro regi on masc.id_mascotas = regi.mascotas_id " +
-            "inner join mascotas.administrador admi on admi.alias = regi.administrador " +
+            "from brvkha5gcmqmm4crcxlq.mascotas masc " +
+            "inner join brvkha5gcmqmm4crcxlq.registro regi on masc.id_mascotas = regi.mascotas_id " +
+            "inner join brvkha5gcmqmm4crcxlq.administrador admi on admi.alias = regi.administrador " +
             "where masc.estado = LOWER('t') ", nativeQuery = true)
     public List<Map<String, Object>> getRegistros();
 
@@ -23,9 +23,9 @@ public interface RegistroRepository extends JpaRepository<Registro, String> {
             "masc.id_mascotas, masc.estado, masc.edad, masc.medida, masc.nombre, " +
             "admi.alias, admi.correo, " +
             "regi.fecha_registro " +
-            "from mascotas.mascotas masc " +
-            "inner join mascotas.registro regi on masc.id_mascotas = regi.mascotas_id " +
-            "inner join mascotas.administrador admi on admi.alias = regi.administrador " +
+            "from brvkha5gcmqmm4crcxlq.mascotas masc " +
+            "inner join brvkha5gcmqmm4crcxlq.registro regi on masc.id_mascotas = regi.mascotas_id " +
+            "inner join brvkha5gcmqmm4crcxlq.administrador admi on admi.alias = regi.administrador " +
             "where masc.estado = LOWER(:estado) ", nativeQuery = true)
     public List<Map<String, Object>> getEstadoRegistros(@Param("estado") String estado);
 }

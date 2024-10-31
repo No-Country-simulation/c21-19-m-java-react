@@ -11,12 +11,12 @@ import java.util.Map;
 public interface UsuarioRepository extends JpaRepository<Usuario, String> {
     @Query(value = "select " +
             "dni, nombre, estado, correo, imagen, clave " +
-            "from mascotas.usuario " +
+            "from brvkha5gcmqmm4crcxlq.usuario " +
             "where estado = LOWER('t') ", nativeQuery = true)
     public List<Map<String, Object>> getUsuarios();
     @Query(value = "select " +
             "dni, nombre, estado, correo, imagen, clave " +
-            "from mascotas.usuario " +
+            "from brvkha5gcmqmm4crcxlq.usuario " +
             "where estado = LOWER(:estado) ", nativeQuery = true)
     public List<Map<String, Object>> getEstadoUsuarios(@Param("estado") String estado);
 }

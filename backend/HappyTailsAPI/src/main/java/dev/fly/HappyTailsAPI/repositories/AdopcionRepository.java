@@ -15,9 +15,9 @@ public interface AdopcionRepository extends JpaRepository<Adopcion, AdopcionLlav
             "usu.dni, usu.nombre as usuario, usu.correo, " +
             "masc.id_mascotas, masc.raza, masc.nombre, masc.edad, masc.medida, masc.estado, " +
             "adop.fecha_adopcion, adop.solicitud " +
-            "from mascotas.adopcion adop " +
-            "inner join mascotas.usuario usu on adop.dni_usuario = usu.dni " +
-            "inner join mascotas.mascotas masc on adop.mascotas_id = masc.id_mascotas " +
+            "from brvkha5gcmqmm4crcxlq.adopcion adop " +
+            "inner join brvkha5gcmqmm4crcxlq.usuario usu on adop.dni_usuario = usu.dni " +
+            "inner join brvkha5gcmqmm4crcxlq.mascotas masc on adop.mascotas_id = masc.id_mascotas " +
             "where masc.estado = LOWER('t') ", nativeQuery = true)
     public List<Map<String, Object>> getAdopciones();
 
@@ -25,9 +25,9 @@ public interface AdopcionRepository extends JpaRepository<Adopcion, AdopcionLlav
             "usu.dni, usu.nombre as usuario, usu.correo, " +
             "masc.id_mascotas, masc.raza , masc.nombre, masc.edad, masc.medida, masc.estado, " +
             "adop.fecha_adopcion, adop.solicitud " +
-            "from mascotas.adopcion adop " +
-            "inner join mascotas.usuario usu on adop.dni_usuario = usu.dni " +
-            "inner join mascotas.mascotas masc on adop.mascotas_id = masc.id_mascotas " +
+            "from brvkha5gcmqmm4crcxlq.adopcion adop " +
+            "inner join brvkha5gcmqmm4crcxlq.usuario usu on adop.dni_usuario = usu.dni " +
+            "inner join brvkha5gcmqmm4crcxlq.mascotas masc on adop.mascotas_id = masc.id_mascotas " +
             "where masc.estado = LOWER(:estado) ", nativeQuery = true)
     public List<Map<String, Object>> getEstadoAdopciones(@Param("estado") String estado);
 }

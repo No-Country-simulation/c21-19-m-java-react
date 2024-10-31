@@ -1,11 +1,6 @@
-FROM maven:latest AS build
-WORKDIR /api
-COPY pom.xml .
-COPY src/ ./src
-RUN mvn clean install
-
 FROM amazoncorretto:21.0.4-al2023
-COPY --from=build /api/target .
+RUN mkdir /app
+WORKDIR /app
+COPY target/HappyTailsAPI-0.0.1-SNAPSHOT.jar /app/happytails.jar
 EXPOSE 8080
-
-ENTRYPOINT ["java", "-jar", "api.jar"]
+CMD java -jar happytails.jar
