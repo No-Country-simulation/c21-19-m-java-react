@@ -14,6 +14,7 @@
   --bg-alpha-color: rgba(162, 225, 237, 0.75);
 
   --bg-img-color: rgba(20, 25, 45, 0.75);
+  --nav-text-color: #000000a6;
 }
 /* ***************Reset Styles*********************** */
 body {
@@ -54,6 +55,109 @@ body {
   color: var(--first-color);
 }
 /* ***************My Styles*********************** */
+
+/* ***Administrador*** */
+
+/* AdminDashboard.css */
+.admin-dashboard {
+  display: flex;
+}
+
+.admin-sidebar {
+  width: 250px;
+  background-color: var(--second-alpha-color);
+  padding: 20px;
+}
+
+.admin-content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.admin-form {
+  margin-bottom: 1rem;
+}
+
+.admin-form input[type="text"] {
+  border: thin solid #dedede;
+  border-radius: 0.25rem;
+  padding: 0.7rem;
+  margin-bottom: 1rem;
+  outline: none;
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+  line-height: 1;
+  background-color: transparent;
+}
+
+.admin-btn {
+  border: thin solid #444;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem 0 0;
+  display: inline-block;
+  background-color: #eee;
+  color: #444;
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 1;
+  text-transform: none;
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.admin-table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.admin-nav {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 0 0 2rem;
+  min-height: 100vh;
+}
+
+.admin-nav-item {
+  text-decoration: none;
+  color: var(--nav-text-color);
+  font-weight: bold;
+  font-size: 18.4px;
+  margin-bottom: 0.5rem;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.5rem;
+  border-bottom: thin solid #dedede;
+}
+
+.grid-1 {
+  margin: 1rem;
+}
+
+.grid-1-2 {
+  margin: 1rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .grid-1-2 {
+    margin: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: 2rem;
+  }
+}
+
+/* ***Adopcion Mascota*** */
+
 .adoption-card {
   margin: 2rem;
   padding: 1rem;
@@ -84,6 +188,8 @@ body {
   margin-right: auto;
 }
 
+/* ***Colores de Fondo*** */
+
 .bg-second-alpha-color {
   background-color: var(--second-alpha-color);
 }
@@ -110,6 +216,8 @@ body {
   background-size: cover;
   background-position: center;
 }
+
+/* ***Cards Mascotas*** */
 
 .card-mascota {
   width: 100%;
@@ -181,6 +289,8 @@ body {
   left: 0;
 }
 
+/* ***Carousel*** */
+
 .carousel-img {
   width: auto;
   height: 500px;
@@ -236,46 +346,22 @@ body {
 .social-icon {
   width: 20px;
   height: 20px;
-  /*   fill: var(--link-color);
-  transition: all 0.3s ease-out; */
 }
-
-/* .social-icon:hover {
-  fill: var(--first-color);
-} */
 
 small {
   display: inline-block;
 }
 
-/* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
   .custom-card {
-    width: 334px; /* Fijar el ancho de todas las tarjetas */
-    height: 368px; /* Fijar la altura de todas las tarjetas */
+    width: 334px;
+    height: 368px;
   }
-
-  /* .mascota-form-contenido {
-    max-width: 800px;
-    flex-direction: row;
-  }
-
-  .mascota-form-contenido img {
-    max-width: 400px;
-    height: auto;
-    object-fit: cover;
-  }
-
-  .mascota-form-info {
-    margin-left: 1rem;
-    align-self: center;
-  } */
 }
 
-/*  Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
   .custom-card {
-    width: 220px; /* Fijar el ancho de todas las tarjetas */
-    height: 240px; /* Fijar la altura de todas las tarjetas */
+    width: 220px;
+    height: 240px;
   }
 }
