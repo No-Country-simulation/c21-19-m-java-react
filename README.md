@@ -12,6 +12,7 @@ Colitas Felices es una plataforma web que conecta a personas interesadas en adop
 
 <details>
   <summary>Haz clic para ver los enlaces de nuestra app</summary>
-  - <a href="https://happytailsapi-crimson-sky-5353.fly.dev">API - Backend</a>
-  - <a href="https://colitas-felices-aa01a.web.app/">Frontend</a>
+  <a href="https://happytailsapi-crimson-sky-5353.fly.dev">API - Backend</a>
+  </br>
+  <a href="https://colitas-felices-aa01a.web.app/">Frontend</a>
 </details>
