@@ -1,5 +1,6 @@
 package dev.fly.HappyTailsAPI.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.fly.HappyTailsAPI.utils.RegistroLlaveCompuesta;
 import jakarta.persistence.*;
 import lombok.*;
@@ -23,6 +24,7 @@ public class Registro {
     @JoinColumn(name = "administrador", nullable = true)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
+    @JsonIgnore
     private Administrador alias;
     
     @ManyToOne
@@ -30,6 +32,7 @@ public class Registro {
     @JoinColumn(name = "mascotas_id", nullable = true)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
+    @JsonIgnore
     private Mascotas mascotas;
 
 }

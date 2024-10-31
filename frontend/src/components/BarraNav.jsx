@@ -39,6 +39,11 @@ function BarraNav({ ingreso, salida }) {
             <Nav.Link className="nav-link" href="/contacto">
               Contacto
             </Nav.Link>
+            {usuario?.perfil === "administrador" && (
+              <Nav.Link className="nav-link" href="/admin">
+                Panel de Administrador
+              </Nav.Link>
+            )}
           </Nav>
           {usuario && usuario.datos.nombre && (
             <button

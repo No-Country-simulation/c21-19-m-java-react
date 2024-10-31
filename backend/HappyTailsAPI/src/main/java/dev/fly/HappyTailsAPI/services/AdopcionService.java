@@ -11,6 +11,6 @@ public interface AdopcionService {
     public List<Map<String, Object>> adopcion();
     public List<Map<String, Object>> adopcionPorEstado(String estado);
     public Adopcion solicitudMascotaUsuario(AdopcionInput data);
-    public Adopcion adopcionMascotaUsuario(AdopcionLlaveCompuesta id, String estadoSolicitud);
+    public Adopcion adopcionMascotaUsuario(AdopcionLlaveCompuesta id, String estado);
     public void eliminarAdopcion(AdopcionLlaveCompuesta id);
 }

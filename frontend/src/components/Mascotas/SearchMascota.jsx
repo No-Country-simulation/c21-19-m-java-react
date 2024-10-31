@@ -1,17 +1,31 @@
 import React, { useEffect, useState } from "react";
-import { urlMascota } from "../../utils/urls";
-import { getDatos } from "../../utils/apiHandler";
+import { urlAdopcion, urlMascota } from "../../utils/urls";
+import { getDatos, postDatos } from "../../utils/apiHandler";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 
-const SearchMascota = () => {
+import dayjs from "dayjs";
+import "dayjs/locale/es";
+
+const SearchMascota = ({usuario}) => {
+  
+  dayjs.locale('es');
+  
+  const [adoptante, setAdoptante] = useState(null);
   const [mascotas, setMascotas] = useState([]);
+  
   const [especie, setEspecie] = useState("Todos");
   const [mostrarModal, setMostrarModal] = useState(false);
   const [mascotaSeleccionada, setMascotaSeleccionada] = useState(null);
   const navigate = useNavigate();
 
+  /**Datos usuario */
+  useEffect(() => {
+    setAdoptante(usuario);
+  }, [usuario]);
+
+  /**Datos mascotas */
   useEffect(() => {
     const obtenerDatos = async () => {
       try {
@@ -23,6 +37,23 @@ const SearchMascota = () => {
     };
     obtenerDatos();
   }, []);
+  
+  /**Datos para adoptar mascota*/
+  const documento = adoptante?.datos?.dni;
+
+  const adopcionMascota = async(usuario, animal) => {
+    try {
+      const fechaAdopcion = dayjs().format("MMMM D, YYYY HH:mm:ss A");
+      await postDatos(urlAdopcion,{
+        dniUsuario: usuario,
+        idMascota: animal.id_mascotas,
+        fechaAdopcion
+      });
+    } catch (error) {
+      console.error(error)
+    }
+  };
+    
 
   const handleChange = (e) => {
     setEspecie(e.target.value);
@@ -38,8 +69,9 @@ const SearchMascota = () => {
     setMascotaSeleccionada(null);
   };
 
-  const handleAdoptarClick = () => {
+  const handleAdoptarClick = (adoptante, mascota) => {
     setMostrarModal(false);
+    adopcionMascota(adoptante, mascota);
     navigate("/mascotasform", { state: { mascota: mascotaSeleccionada } });
   };
 
@@ -128,7 +160,7 @@ const SearchMascota = () => {
           </p>
           <Button
             className="btn btn-lg btn-success mb-5"
-            onClick={handleAdoptarClick}
+            onClick={() => handleAdoptarClick(documento, mascotaSeleccionada)}
           >
             Adoptar
           </Button>
