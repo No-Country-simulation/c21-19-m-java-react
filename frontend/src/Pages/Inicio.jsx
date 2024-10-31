@@ -40,8 +40,7 @@ const Inicio = () => {
               <Card.Body>
                 <Card.Title>Paso 2</Card.Title>
                 <Card.Text>
-                  A continuación se abrira un formulario, llénalo y envía la
-                  solicitud de adopción.
+                  A continuación se abrira una ventana, oprime el boton Adoptar, felicidades tu solicitud de adopción esta en curso.
                 </Card.Text>
               </Card.Body>
             </Card>
